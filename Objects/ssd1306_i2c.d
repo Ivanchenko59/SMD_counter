@@ -1,0 +1,15 @@
+.\objects\ssd1306_i2c.o: code\src\ssd1306_i2c.c
+.\objects\ssd1306_i2c.o: .\code\inc\main.h
+.\objects\ssd1306_i2c.o: .\CMSIS\inc\stm32f10x.h
+.\objects\ssd1306_i2c.o: .\CMSIS\inc\core_cm3.h
+.\objects\ssd1306_i2c.o: D:\Programs\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\ssd1306_i2c.o: .\CMSIS\inc\system_stm32f10x.h
+.\objects\ssd1306_i2c.o: D:\Programs\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\ssd1306_i2c.o: D:\Programs\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\ssd1306_i2c.o: D:\Programs\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\ssd1306_i2c.o: .\code\inc\menu.h
+.\objects\ssd1306_i2c.o: .\code\inc\main.h
+.\objects\ssd1306_i2c.o: .\code\inc\utils.h
+.\objects\ssd1306_i2c.o: .\code\inc\fonts.h
+.\objects\ssd1306_i2c.o: .\code\inc\ssd1306.h
+.\objects\ssd1306_i2c.o: .\code\inc\ssd1306_i2c.h
