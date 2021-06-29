@@ -482,6 +482,11 @@
               <FileType>1</FileType>
               <FilePath>.\code\src\state_machine.c</FilePath>
             </File>
+            <File>
+              <FileName>button.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\code\src\button.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -536,6 +541,11 @@
               <FileName>state_machine.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\code\inc\state_machine.h</FilePath>
+            </File>
+            <File>
+              <FileName>button.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\code\inc\button.h</FilePath>
             </File>
           </Files>
         </Group>

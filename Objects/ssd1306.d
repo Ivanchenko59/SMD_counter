@@ -10,6 +10,7 @@
 .\objects\ssd1306.o: .\code\inc\menu.h
 .\objects\ssd1306.o: .\code\inc\main.h
 .\objects\ssd1306.o: .\code\inc\utils.h
+.\objects\ssd1306.o: .\code\inc\button.h
 .\objects\ssd1306.o: .\code\inc\fonts.h
 .\objects\ssd1306.o: .\code\inc\ssd1306.h
 .\objects\ssd1306.o: .\code\inc\ssd1306_i2c.h

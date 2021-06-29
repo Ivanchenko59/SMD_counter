@@ -7,8 +7,7 @@ extern volatile uint32_t ticks_delay;
 
 //void pll_init(void);
 void delay(uint32_t milliseconds);
-void button_init(void);
-//void opticalsensor_init(void);
+void TCST_init(void);
 void tmr_init(void);
 
 #endif /* __UTILS_H__ */

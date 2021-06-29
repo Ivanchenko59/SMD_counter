@@ -9,11 +9,13 @@
 
 #include "menu.h"
 #include "utils.h"
+#include "button.h"
 #include "fonts.h"
 #include "ssd1306.h"
 #include "ssd1306_i2c.h"
 
 extern volatile int8_t pointer;
+extern volatile uint32_t smd_counter;
 
 void mcu_init(void);
 void button_timer_start(void);

@@ -9,6 +9,7 @@
 ".\objects\ssd1306_i2c.o"
 ".\objects\menu.o"
 ".\objects\state_machine.o"
+".\objects\button.o"
 --ro-base 0x08000000 --entry 0x08000000 --rw-base 0x20000000 --entry Reset_Handler --first __Vectors --strict --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers
 --list ".\Listings\SMD_counter.map" -o .\Objects\SMD_counter.axf

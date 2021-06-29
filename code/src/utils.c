@@ -7,41 +7,28 @@ void delay(const uint32_t milliseconds) {
 	while((ticks_delay - start) < milliseconds);
 }
 
-
-void button_init() {
-	//clocking PORT B and AFIO for enable AFIO multiplexer 
-	RCC->APB2ENR |= RCC_APB2ENR_IOPBEN | RCC_APB2ENR_AFIOEN;
+void TCST_init() {
 	
-	//http://easyelectronics.ru/arm-uchebnyj-kurs-vneshnie-preryvaniya.html
-	AFIO->EXTICR[2] |= AFIO_EXTICR3_EXTI8_PA | AFIO_EXTICR3_EXTI10_PB | AFIO_EXTICR3_EXTI11_PB;
+	//config GPIOB4 to input mode with pull up/pull down
+	GPIOB->CRL &= ~GPIO_CRL_MODE4;
+	GPIOB->CRL |= GPIO_CRL_CNF4_1;
+	GPIOB->CRL &= ~GPIO_CRL_CNF4_0;
+	//input with pull up == 1
+	GPIOB->ODR |= GPIO_ODR_ODR4; 
 	
-	//OK button
-	GPIOB->CRH &= ~GPIO_CRH_MODE10;
-	GPIOB->CRH |= GPIO_CRH_CNF10_1;
-	GPIOB->CRH &= ~GPIO_CRH_CNF10_0;
-	EXTI->IMR  |= EXTI_IMR_MR10;
-	EXTI->RTSR |= EXTI_RTSR_TR10;
-	EXTI->FTSR |= EXTI_FTSR_TR10;
-	//RIGHT button
-	GPIOB->CRH &= ~GPIO_CRH_MODE11;
-	GPIOB->CRH |= GPIO_CRH_CNF11_1;
-	GPIOB->CRH &= ~GPIO_CRH_CNF11_0;
-	EXTI->IMR  |= EXTI_IMR_MR11;
-	EXTI->RTSR |= EXTI_RTSR_TR11;
-	//LEFT button
-	GPIOA->CRH &= ~GPIO_CRH_MODE8;
-	GPIOA->CRH |= GPIO_CRH_CNF8_1;
-	GPIOA->CRH &= ~GPIO_CRH_CNF8_0;
-	EXTI->IMR  |= EXTI_IMR_MR8;
-	EXTI->RTSR |= EXTI_RTSR_TR8;
+	//switch EXTI multiplexer to PB4
+ 	AFIO->EXTICR[1] |= AFIO_EXTICR2_EXTI4_PB;
 	
-	NVIC_EnableIRQ(EXTI9_5_IRQn);
-	NVIC_EnableIRQ(EXTI15_10_IRQn);
+	NVIC_EnableIRQ(EXTI4_IRQn);
+	EXTI->IMR |= EXTI_IMR_MR4;
+	EXTI->RTSR |= EXTI_RTSR_TR4;
+	EXTI->FTSR |= EXTI_FTSR_TR4;
+	
 }
 
 void tmr_init() {
 	//timer for long press button 
 	RCC->APB1ENR |= RCC_APB1ENR_TIM3EN;
-	TIM3->PSC = (SystemCoreClock / 2) / 1000 - 1; 
-	TIM3->ARR = 4000 - 1;
+	TIM3->PSC = (SystemCoreClock / 100) - 1;
+	TIM3->ARR = 10000 - 1;
 }
