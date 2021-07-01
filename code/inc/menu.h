@@ -11,7 +11,8 @@ typedef enum {
 	STATE_COUNT_MENU,		// 1
 	STATE_SETTING_MENU,		// 2
 	STATE_SAVE_MENU,		// 3
-	STATE_MAX,				// 4
+	STATE_DATABASE_MENU,	// 4
+	STATE_MAX,				// 5
 } STATE_t;
 
 typedef enum {
@@ -23,21 +24,33 @@ typedef enum {
 } EVENT_t;
 
 typedef enum {
-	SAVE_TO_DATABASE,		//0
-	EDIT_AND_SAVE,			//1
-	CONTINUE,				//2
-	CANCEL,					//3
-	SAVE_MENU_MAX,			//4
+	SAVE_TO_DATABASE,		// 0
+	EDIT_AND_SAVE,			// 1
+	CONTINUE,				// 2
+	CANCEL,					// 3
+	SAVE_MENU_MAX,			// 4
 } SAVE_MENU_t;
 
-extern uint8_t state, event;
+typedef enum {
+	STEP_COUNTER,			// 0
+	DATABASE,				// 1
+	EXPORT_TO_PC,			// 2
+	EXIT,					// 3
+	SETTING_MENU_MAX,		// 4
+} SETTING_MENU_t;
+
+extern uint8_t state, event, edit_step_flag, step_size, edit_db_flag;
+extern uint32_t database[];
+extern volatile int8_t pointer;
 extern TRANSITION_FUNC_PTR_t transition_table[STATE_MAX][EVENT_MAX];
 
 uint8_t constrain(int8_t x, uint8_t min, uint8_t max);
+void welcome_menu(void);
 void main_menu(void);
 void count_menu(void);
 void setting_menu(void);
 void edit_menu(void);
 void save_menu(void);
+void database_menu(void);
 
 #endif /* __MENU_H__ */

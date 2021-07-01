@@ -20,20 +20,18 @@ Section Cross References
     system_stm32f10x.o(i.SystemCoreClockUpdate) refers to system_stm32f10x.o(.data) for SystemCoreClock
     system_stm32f10x.o(i.SystemInit) refers to system_stm32f10x.o(i.SetSysClock) for SetSysClock
     main.o(i.EXTI4_IRQHandler) refers to main.o(.data) for smd_counter
-    main.o(i.SysTick_Handler) refers to utils.o(.data) for ticks_delay
+    main.o(i.SysTick_Handler) refers to utils.o(.data) for sys_tick
     main.o(i.main) refers to main.o(i.mcu_init) for mcu_init
+    main.o(i.main) refers to menu.o(i.welcome_menu) for welcome_menu
     main.o(i.main) refers to ssd1306.o(i.SSD1306_Fill) for SSD1306_Fill
     main.o(i.main) refers to button.o(i.button_check) for button_check
     main.o(i.main) refers to ssd1306.o(i.SSD1306_UpdateScreen) for SSD1306_UpdateScreen
     main.o(i.main) refers to menu.o(.data) for state
-    main.o(i.main) refers to main.o(.data) for pointer
     main.o(i.mcu_init) refers to ssd1306.o(i.SSD1306_Init) for SSD1306_Init
     main.o(i.mcu_init) refers to button.o(i.button_init) for button_init
     main.o(i.mcu_init) refers to utils.o(i.TCST_init) for TCST_init
-    main.o(i.mcu_init) refers to utils.o(i.tmr_init) for tmr_init
     main.o(i.mcu_init) refers to system_stm32f10x.o(.data) for SystemCoreClock
-    utils.o(i.delay) refers to utils.o(.data) for ticks_delay
-    utils.o(i.tmr_init) refers to system_stm32f10x.o(.data) for SystemCoreClock
+    utils.o(i.delay) refers to utils.o(.data) for sys_tick
     fonts.o(i.FONTS_GetStringSize) refers to strlen.o(.text) for strlen
     fonts.o(.data) refers to fonts.o(.constdata) for Font7x10
     ssd1306.o(i.SSD1306_DrawCircle) refers to ssd1306.o(i.SSD1306_DrawPixel) for SSD1306_DrawPixel
@@ -76,10 +74,28 @@ Section Cross References
     ssd1306_i2c.o(i.ssd1306_I2C_WriteMulti) refers to ssd1306_i2c.o(i.ssd1306_I2C_Start) for ssd1306_I2C_Start
     ssd1306_i2c.o(i.ssd1306_I2C_WriteMulti) refers to ssd1306_i2c.o(i.ssd1306_I2C_WriteData) for ssd1306_I2C_WriteData
     ssd1306_i2c.o(i.ssd1306_I2C_WriteMulti) refers to ssd1306_i2c.o(i.ssd1306_I2C_Stop) for ssd1306_I2C_Stop
+    menu.o(i.count_menu) refers to _printf_percent.o(.ARM.Collect$$_printf_percent$$00000000) for _printf_percent
+    menu.o(i.count_menu) refers to _printf_u.o(.ARM.Collect$$_printf_percent$$0000000A) for _printf_u
+    menu.o(i.count_menu) refers to _printf_dec.o(.text) for _printf_int_dec
+    menu.o(i.count_menu) refers to noretval__2sprintf.o(.text) for __2sprintf
     menu.o(i.count_menu) refers to ssd1306.o(i.SSD1306_GotoXY) for SSD1306_GotoXY
     menu.o(i.count_menu) refers to ssd1306.o(i.SSD1306_Puts) for SSD1306_Puts
     menu.o(i.count_menu) refers to menu.o(.data) for state
-    menu.o(i.count_menu) refers to fonts.o(.data) for Font_11x18
+    menu.o(i.count_menu) refers to menu.o(.bss) for str
+    menu.o(i.count_menu) refers to fonts.o(.data) for Font_7x10
+    menu.o(i.count_menu) refers to main.o(.data) for smd_counter
+    menu.o(i.database_menu) refers to _printf_percent.o(.ARM.Collect$$_printf_percent$$00000000) for _printf_percent
+    menu.o(i.database_menu) refers to _printf_u.o(.ARM.Collect$$_printf_percent$$0000000A) for _printf_u
+    menu.o(i.database_menu) refers to _printf_dec.o(.text) for _printf_int_dec
+    menu.o(i.database_menu) refers to ssd1306.o(i.SSD1306_GotoXY) for SSD1306_GotoXY
+    menu.o(i.database_menu) refers to ssd1306.o(i.SSD1306_Puts) for SSD1306_Puts
+    menu.o(i.database_menu) refers to menu.o(i.constrain) for constrain
+    menu.o(i.database_menu) refers to ssd1306.o(i.SSD1306_DrawRectangle) for SSD1306_DrawRectangle
+    menu.o(i.database_menu) refers to ssd1306.o(i.SSD1306_DrawFilledRectangle) for SSD1306_DrawFilledRectangle
+    menu.o(i.database_menu) refers to noretval__2sprintf.o(.text) for __2sprintf
+    menu.o(i.database_menu) refers to menu.o(.data) for state
+    menu.o(i.database_menu) refers to fonts.o(.data) for Font_11x18
+    menu.o(i.database_menu) refers to menu.o(.bss) for database
     menu.o(i.edit_menu) refers to ssd1306.o(i.SSD1306_GotoXY) for SSD1306_GotoXY
     menu.o(i.edit_menu) refers to ssd1306.o(i.SSD1306_Puts) for SSD1306_Puts
     menu.o(i.edit_menu) refers to menu.o(.data) for state
@@ -91,29 +107,52 @@ Section Cross References
     menu.o(i.main_menu) refers to ssd1306.o(i.SSD1306_Puts) for SSD1306_Puts
     menu.o(i.main_menu) refers to noretval__2sprintf.o(.text) for __2sprintf
     menu.o(i.main_menu) refers to menu.o(.data) for state
-    menu.o(i.main_menu) refers to fonts.o(.data) for Font_7x10
-    menu.o(i.main_menu) refers to main.o(.data) for smd_counter
+    menu.o(i.main_menu) refers to fonts.o(.data) for Font_11x18
     menu.o(i.main_menu) refers to menu.o(.bss) for str
+    menu.o(i.save_menu) refers to _printf_percent.o(.ARM.Collect$$_printf_percent$$00000000) for _printf_percent
+    menu.o(i.save_menu) refers to _printf_u.o(.ARM.Collect$$_printf_percent$$0000000A) for _printf_u
+    menu.o(i.save_menu) refers to _printf_dec.o(.text) for _printf_int_dec
     menu.o(i.save_menu) refers to menu.o(i.constrain) for constrain
     menu.o(i.save_menu) refers to ssd1306.o(i.SSD1306_DrawRectangle) for SSD1306_DrawRectangle
     menu.o(i.save_menu) refers to ssd1306.o(i.SSD1306_DrawFilledRectangle) for SSD1306_DrawFilledRectangle
     menu.o(i.save_menu) refers to ssd1306.o(i.SSD1306_GotoXY) for SSD1306_GotoXY
     menu.o(i.save_menu) refers to ssd1306.o(i.SSD1306_Puts) for SSD1306_Puts
+    menu.o(i.save_menu) refers to noretval__2sprintf.o(.text) for __2sprintf
+    menu.o(i.save_menu) refers to ssd1306.o(i.SSD1306_Fill) for SSD1306_Fill
+    menu.o(i.save_menu) refers to ssd1306.o(i.SSD1306_UpdateScreen) for SSD1306_UpdateScreen
+    menu.o(i.save_menu) refers to utils.o(i.delay) for delay
     menu.o(i.save_menu) refers to menu.o(.data) for state
-    menu.o(i.save_menu) refers to main.o(.data) for pointer
     menu.o(i.save_menu) refers to fonts.o(.data) for Font_7x10
+    menu.o(i.save_menu) refers to main.o(.data) for smd_counter
+    menu.o(i.save_menu) refers to menu.o(.bss) for str
+    menu.o(i.setting_menu) refers to _printf_percent.o(.ARM.Collect$$_printf_percent$$00000000) for _printf_percent
+    menu.o(i.setting_menu) refers to _printf_u.o(.ARM.Collect$$_printf_percent$$0000000A) for _printf_u
+    menu.o(i.setting_menu) refers to _printf_dec.o(.text) for _printf_int_dec
+    menu.o(i.setting_menu) refers to menu.o(i.constrain) for constrain
+    menu.o(i.setting_menu) refers to ssd1306.o(i.SSD1306_DrawRectangle) for SSD1306_DrawRectangle
+    menu.o(i.setting_menu) refers to ssd1306.o(i.SSD1306_DrawFilledRectangle) for SSD1306_DrawFilledRectangle
     menu.o(i.setting_menu) refers to ssd1306.o(i.SSD1306_GotoXY) for SSD1306_GotoXY
     menu.o(i.setting_menu) refers to ssd1306.o(i.SSD1306_Puts) for SSD1306_Puts
-    menu.o(i.setting_menu) refers to fonts.o(.data) for Font_11x18
+    menu.o(i.setting_menu) refers to noretval__2sprintf.o(.text) for __2sprintf
     menu.o(i.setting_menu) refers to menu.o(.data) for state
+    menu.o(i.setting_menu) refers to fonts.o(.data) for Font_7x10
+    menu.o(i.setting_menu) refers to menu.o(.bss) for str
+    menu.o(i.welcome_menu) refers to ssd1306.o(i.SSD1306_Fill) for SSD1306_Fill
+    menu.o(i.welcome_menu) refers to ssd1306.o(i.SSD1306_GotoXY) for SSD1306_GotoXY
+    menu.o(i.welcome_menu) refers to ssd1306.o(i.SSD1306_Puts) for SSD1306_Puts
+    menu.o(i.welcome_menu) refers to ssd1306.o(i.SSD1306_DrawFilledRectangle) for SSD1306_DrawFilledRectangle
+    menu.o(i.welcome_menu) refers to ssd1306.o(i.SSD1306_DrawFilledCircle) for SSD1306_DrawFilledCircle
+    menu.o(i.welcome_menu) refers to ssd1306.o(i.SSD1306_UpdateScreen) for SSD1306_UpdateScreen
+    menu.o(i.welcome_menu) refers to fonts.o(.data) for Font_11x18
     menu.o(.data) refers to menu.o(i.main_menu) for main_menu
     menu.o(.data) refers to menu.o(i.count_menu) for count_menu
     menu.o(.data) refers to menu.o(i.setting_menu) for setting_menu
     menu.o(.data) refers to menu.o(i.save_menu) for save_menu
-    button.o(i.button_check) refers to utils.o(.data) for ticks_delay
-    button.o(i.button_check) refers to button.o(.data) for short_state
+    menu.o(.data) refers to menu.o(i.database_menu) for database_menu
+    button.o(i.button_check) refers to button.o(.data) for btn
+    button.o(i.button_check) refers to utils.o(.data) for sys_tick
     button.o(i.button_check) refers to menu.o(.data) for event
-    button.o(i.button_check) refers to main.o(.data) for pointer
+    button.o(i.button_check) refers to menu.o(.bss) for database
     __2sprintf.o(.text) refers to _printf_char_common.o(.text) for _printf_char_common
     __2sprintf.o(.text) refers to _sputc.o(.text) for _sputc
     noretval__2sprintf.o(.text) refers to _printf_char_common.o(.text) for _printf_char_common
@@ -249,7 +288,6 @@ Removing Unused input sections from the image.
     Removing system_stm32f10x.o(i.SystemCoreClockUpdate), (164 bytes).
     Removing fonts.o(i.FONTS_GetStringSize), (28 bytes).
     Removing ssd1306.o(i.SSD1306_DrawCircle), (260 bytes).
-    Removing ssd1306.o(i.SSD1306_DrawFilledCircle), (334 bytes).
     Removing ssd1306.o(i.SSD1306_DrawFilledTriangle), (298 bytes).
     Removing ssd1306.o(i.SSD1306_DrawTriangle), (64 bytes).
     Removing ssd1306.o(i.SSD1306_OFF), (44 bytes).
@@ -257,11 +295,8 @@ Removing Unused input sections from the image.
     Removing ssd1306.o(i.SSD1306_ToggleInvert), (52 bytes).
     Removing ssd1306_i2c.o(i.ssd1306_I2C_IsDeviceConnected), (34 bytes).
     Removing menu.o(i.edit_menu), (56 bytes).
-    Removing main.o(i.button_timer_start), (28 bytes).
-    Removing main.o(i.button_timer_stop), (20 bytes).
-    Removing main.o(i.button_timer_get_value), (12 bytes).
 
-15 unused section(s) (total 1470 bytes) removed from the image.
+11 unused section(s) (total 1076 bytes) removed from the image.
 
 ==============================================================================
 
@@ -272,71 +307,71 @@ Image Symbol Table
     Symbol Name                              Value     Ov Type        Size  Object(Section)
 
     ../clib/angel/boardlib.s                 0x00000000   Number         0  boardshut.o ABSOLUTE
-    ../clib/angel/boardlib.s                 0x00000000   Number         0  boardinit3.o ABSOLUTE
     ../clib/angel/boardlib.s                 0x00000000   Number         0  boardinit2.o ABSOLUTE
+    ../clib/angel/boardlib.s                 0x00000000   Number         0  boardinit3.o ABSOLUTE
     ../clib/angel/boardlib.s                 0x00000000   Number         0  boardinit1.o ABSOLUTE
-    ../clib/angel/handlers.s                 0x00000000   Number         0  __scatter_zi.o ABSOLUTE
     ../clib/angel/handlers.s                 0x00000000   Number         0  __scatter_copy.o ABSOLUTE
-    ../clib/angel/kernel.s                   0x00000000   Number         0  __rtentry.o ABSOLUTE
-    ../clib/angel/kernel.s                   0x00000000   Number         0  __rtentry2.o ABSOLUTE
-    ../clib/angel/kernel.s                   0x00000000   Number         0  __rtentry4.o ABSOLUTE
+    ../clib/angel/handlers.s                 0x00000000   Number         0  __scatter_zi.o ABSOLUTE
     ../clib/angel/kernel.s                   0x00000000   Number         0  rtexit.o ABSOLUTE
+    ../clib/angel/kernel.s                   0x00000000   Number         0  __rtentry4.o ABSOLUTE
+    ../clib/angel/kernel.s                   0x00000000   Number         0  __rtentry.o ABSOLUTE
     ../clib/angel/kernel.s                   0x00000000   Number         0  rtexit2.o ABSOLUTE
+    ../clib/angel/kernel.s                   0x00000000   Number         0  __rtentry2.o ABSOLUTE
     ../clib/angel/rt.s                       0x00000000   Number         0  rt_raise.o ABSOLUTE
     ../clib/angel/scatter.s                  0x00000000   Number         0  __scatter.o ABSOLUTE
     ../clib/angel/startup.s                  0x00000000   Number         0  __main.o ABSOLUTE
-    ../clib/angel/sys.s                      0x00000000   Number         0  libspace.o ABSOLUTE
-    ../clib/angel/sys.s                      0x00000000   Number         0  indicate_semi.o ABSOLUTE
-    ../clib/angel/sys.s                      0x00000000   Number         0  use_no_semi.o ABSOLUTE
     ../clib/angel/sys.s                      0x00000000   Number         0  sys_stackheap_outer.o ABSOLUTE
-    ../clib/angel/sysapp.c                   0x00000000   Number         0  sys_wrch.o ABSOLUTE
+    ../clib/angel/sys.s                      0x00000000   Number         0  libspace.o ABSOLUTE
+    ../clib/angel/sys.s                      0x00000000   Number         0  use_no_semi.o ABSOLUTE
+    ../clib/angel/sys.s                      0x00000000   Number         0  indicate_semi.o ABSOLUTE
     ../clib/angel/sysapp.c                   0x00000000   Number         0  sys_exit.o ABSOLUTE
     ../clib/angel/sysapp.c                   0x00000000   Number         0  sys_command.o ABSOLUTE
+    ../clib/angel/sysapp.c                   0x00000000   Number         0  sys_wrch.o ABSOLUTE
     ../clib/armsys.c                         0x00000000   Number         0  _get_argv_nomalloc.o ABSOLUTE
     ../clib/armsys.c                         0x00000000   Number         0  argv_veneer.o ABSOLUTE
     ../clib/armsys.c                         0x00000000   Number         0  argv_veneer.o ABSOLUTE
     ../clib/armsys.c                         0x00000000   Number         0  no_argv.o ABSOLUTE
     ../clib/heapalloc.c                      0x00000000   Number         0  hrguard.o ABSOLUTE
     ../clib/heapaux.c                        0x00000000   Number         0  heapauxi.o ABSOLUTE
-    ../clib/libinit.s                        0x00000000   Number         0  libinit2.o ABSOLUTE
-    ../clib/libinit.s                        0x00000000   Number         0  libshutdown.o ABSOLUTE
     ../clib/libinit.s                        0x00000000   Number         0  libshutdown2.o ABSOLUTE
+    ../clib/libinit.s                        0x00000000   Number         0  libshutdown.o ABSOLUTE
+    ../clib/libinit.s                        0x00000000   Number         0  libinit2.o ABSOLUTE
     ../clib/libinit.s                        0x00000000   Number         0  libinit.o ABSOLUTE
-    ../clib/memcpset.s                       0x00000000   Number         0  aeabi_memset.o ABSOLUTE
     ../clib/memcpset.s                       0x00000000   Number         0  rt_memclr_w.o ABSOLUTE
     ../clib/memcpset.s                       0x00000000   Number         0  rt_memclr.o ABSOLUTE
-    ../clib/printf.c                         0x00000000   Number         0  __printf_wp.o ABSOLUTE
-    ../clib/printf.c                         0x00000000   Number         0  __printf_flags_ss_wp.o ABSOLUTE
+    ../clib/memcpset.s                       0x00000000   Number         0  aeabi_memset.o ABSOLUTE
     ../clib/printf.c                         0x00000000   Number         0  noretval__2sprintf.o ABSOLUTE
-    ../clib/printf.c                         0x00000000   Number         0  __2sprintf.o ABSOLUTE
-    ../clib/printf.c                         0x00000000   Number         0  _printf_intcommon.o ABSOLUTE
-    ../clib/printf.c                         0x00000000   Number         0  __printf_ss_wp.o ABSOLUTE
-    ../clib/printf.c                         0x00000000   Number         0  _printf_char_common.o ABSOLUTE
-    ../clib/printf.c                         0x00000000   Number         0  __printf_nopercent.o ABSOLUTE
-    ../clib/printf.c                         0x00000000   Number         0  __printf_flags_wp.o ABSOLUTE
-    ../clib/printf.c                         0x00000000   Number         0  __printf_flags_ss.o ABSOLUTE
-    ../clib/printf.c                         0x00000000   Number         0  __printf_ss.o ABSOLUTE
     ../clib/printf.c                         0x00000000   Number         0  __printf.o ABSOLUTE
     ../clib/printf.c                         0x00000000   Number         0  __printf_flags.o ABSOLUTE
     ../clib/printf.c                         0x00000000   Number         0  _printf_dec.o ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  __printf_ss.o ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  __2sprintf.o ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  __printf_flags_ss.o ABSOLUTE
     ../clib/printf.c                         0x00000000   Number         0  _sputc.o ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  __printf_wp.o ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  _printf_intcommon.o ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  __printf_flags_wp.o ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  __printf_flags_ss_wp.o ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  __printf_ss_wp.o ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  __printf_nopercent.o ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  _printf_char_common.o ABSOLUTE
     ../clib/printf_percent.s                 0x00000000   Number         0  _printf_percent_end.o ABSOLUTE
     ../clib/printf_percent.s                 0x00000000   Number         0  _printf_percent.o ABSOLUTE
     ../clib/printf_percent.s                 0x00000000   Number         0  _printf_u.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_general.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_rtmem_outer.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  __raise.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_rtmem_inner.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_pvfn_inner.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_exit.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_fpe_inner.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_rtred_inner.o ABSOLUTE
     ../clib/signal.c                         0x00000000   Number         0  defsig_stak_inner.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_abrt_inner.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_pvfn_inner.o ABSOLUTE
     ../clib/signal.c                         0x00000000   Number         0  defsig_cppl_inner.o ABSOLUTE
     ../clib/signal.c                         0x00000000   Number         0  defsig_segv_inner.o ABSOLUTE
     ../clib/signal.c                         0x00000000   Number         0  defsig_other.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  __raise.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_rtmem_outer.o ABSOLUTE
     ../clib/signal.c                         0x00000000   Number         0  defsig_rtmem_formal.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_exit.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_rtmem_inner.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_general.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_abrt_inner.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_fpe_inner.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_rtred_inner.o ABSOLUTE
     ../clib/signal.s                         0x00000000   Number         0  defsig.o ABSOLUTE
     ../clib/stdlib.c                         0x00000000   Number         0  exit.o ABSOLUTE
     ../clib/string.c                         0x00000000   Number         0  strlen.o ABSOLUTE
@@ -423,41 +458,43 @@ Image Symbol Table
     .text                                    0x080004dc   Section        2  use_no_semi.o(.text)
     .text                                    0x080004de   Section        0  indicate_semi.o(.text)
     i.EXTI4_IRQHandler                       0x080004e0   Section        0  main.o(i.EXTI4_IRQHandler)
-    i.SSD1306_DrawFilledRectangle            0x08000500   Section        0  ssd1306.o(i.SSD1306_DrawFilledRectangle)
-    i.SSD1306_DrawLine                       0x0800055e   Section        0  ssd1306.o(i.SSD1306_DrawLine)
-    i.SSD1306_DrawPixel                      0x080006a8   Section        0  ssd1306.o(i.SSD1306_DrawPixel)
-    i.SSD1306_DrawRectangle                  0x08000748   Section        0  ssd1306.o(i.SSD1306_DrawRectangle)
-    i.SSD1306_Fill                           0x080007d0   Section        0  ssd1306.o(i.SSD1306_Fill)
-    i.SSD1306_GotoXY                         0x080007f0   Section        0  ssd1306.o(i.SSD1306_GotoXY)
-    i.SSD1306_Init                           0x080007fc   Section        0  ssd1306.o(i.SSD1306_Init)
-    i.SSD1306_Putc                           0x08000978   Section        0  ssd1306.o(i.SSD1306_Putc)
-    i.SSD1306_Puts                           0x08000a20   Section        0  ssd1306.o(i.SSD1306_Puts)
-    i.SSD1306_UpdateScreen                   0x08000a4c   Section        0  ssd1306.o(i.SSD1306_UpdateScreen)
-    i.SetSysClock                            0x08000aa4   Section        0  system_stm32f10x.o(i.SetSysClock)
-    SetSysClock                              0x08000aa5   Thumb Code     8  system_stm32f10x.o(i.SetSysClock)
-    i.SetSysClockTo72                        0x08000aac   Section        0  system_stm32f10x.o(i.SetSysClockTo72)
-    SetSysClockTo72                          0x08000aad   Thumb Code   214  system_stm32f10x.o(i.SetSysClockTo72)
-    i.SysTick_Handler                        0x08000b8c   Section        0  main.o(i.SysTick_Handler)
-    i.SystemInit                             0x08000b9c   Section        0  system_stm32f10x.o(i.SystemInit)
-    i.TCST_init                              0x08000bfc   Section        0  utils.o(i.TCST_init)
-    i.button_check                           0x08000c84   Section        0  button.o(i.button_check)
-    i.button_init                            0x08000dc8   Section        0  button.o(i.button_init)
-    i.constrain                              0x08000e50   Section        0  menu.o(i.constrain)
-    i.count_menu                             0x08000e68   Section        0  menu.o(i.count_menu)
-    i.delay                                  0x08000ea0   Section        0  utils.o(i.delay)
-    i.main                                   0x08000eb8   Section        0  main.o(i.main)
-    i.main_menu                              0x08000f08   Section        0  menu.o(i.main_menu)
-    i.mcu_init                               0x08000f90   Section        0  main.o(i.mcu_init)
-    i.save_menu                              0x08001000   Section        0  menu.o(i.save_menu)
-    i.setting_menu                           0x0800114c   Section        0  menu.o(i.setting_menu)
-    i.ssd1306_I2C_Init                       0x08001188   Section        0  ssd1306_i2c.o(i.ssd1306_I2C_Init)
-    i.ssd1306_I2C_Start                      0x08001210   Section        0  ssd1306_i2c.o(i.ssd1306_I2C_Start)
-    i.ssd1306_I2C_Stop                       0x08001294   Section        0  ssd1306_i2c.o(i.ssd1306_I2C_Stop)
-    i.ssd1306_I2C_Write                      0x080012d4   Section        0  ssd1306_i2c.o(i.ssd1306_I2C_Write)
-    i.ssd1306_I2C_WriteData                  0x08001304   Section        0  ssd1306_i2c.o(i.ssd1306_I2C_WriteData)
-    i.ssd1306_I2C_WriteMulti                 0x08001330   Section        0  ssd1306_i2c.o(i.ssd1306_I2C_WriteMulti)
-    i.tmr_init                               0x08001374   Section        0  utils.o(i.tmr_init)
-    .constdata                               0x080013a8   Section    10260  fonts.o(.constdata)
+    i.SSD1306_DrawFilledCircle               0x08000510   Section        0  ssd1306.o(i.SSD1306_DrawFilledCircle)
+    i.SSD1306_DrawFilledRectangle            0x0800065e   Section        0  ssd1306.o(i.SSD1306_DrawFilledRectangle)
+    i.SSD1306_DrawLine                       0x080006bc   Section        0  ssd1306.o(i.SSD1306_DrawLine)
+    i.SSD1306_DrawPixel                      0x08000808   Section        0  ssd1306.o(i.SSD1306_DrawPixel)
+    i.SSD1306_DrawRectangle                  0x080008a8   Section        0  ssd1306.o(i.SSD1306_DrawRectangle)
+    i.SSD1306_Fill                           0x08000930   Section        0  ssd1306.o(i.SSD1306_Fill)
+    i.SSD1306_GotoXY                         0x08000950   Section        0  ssd1306.o(i.SSD1306_GotoXY)
+    i.SSD1306_Init                           0x0800095c   Section        0  ssd1306.o(i.SSD1306_Init)
+    i.SSD1306_Putc                           0x08000ad8   Section        0  ssd1306.o(i.SSD1306_Putc)
+    i.SSD1306_Puts                           0x08000b80   Section        0  ssd1306.o(i.SSD1306_Puts)
+    i.SSD1306_UpdateScreen                   0x08000bac   Section        0  ssd1306.o(i.SSD1306_UpdateScreen)
+    i.SetSysClock                            0x08000c04   Section        0  system_stm32f10x.o(i.SetSysClock)
+    SetSysClock                              0x08000c05   Thumb Code     8  system_stm32f10x.o(i.SetSysClock)
+    i.SetSysClockTo72                        0x08000c0c   Section        0  system_stm32f10x.o(i.SetSysClockTo72)
+    SetSysClockTo72                          0x08000c0d   Thumb Code   214  system_stm32f10x.o(i.SetSysClockTo72)
+    i.SysTick_Handler                        0x08000cec   Section        0  main.o(i.SysTick_Handler)
+    i.SystemInit                             0x08000cfc   Section        0  system_stm32f10x.o(i.SystemInit)
+    i.TCST_init                              0x08000d5c   Section        0  utils.o(i.TCST_init)
+    i.button_check                           0x08000dd0   Section        0  button.o(i.button_check)
+    i.button_init                            0x0800101c   Section        0  button.o(i.button_init)
+    i.constrain                              0x080010a4   Section        0  menu.o(i.constrain)
+    i.count_menu                             0x080010bc   Section        0  menu.o(i.count_menu)
+    i.database_menu                          0x0800116c   Section        0  menu.o(i.database_menu)
+    i.delay                                  0x080012b4   Section        0  utils.o(i.delay)
+    i.main                                   0x080012cc   Section        0  main.o(i.main)
+    i.main_menu                              0x0800133c   Section        0  menu.o(i.main_menu)
+    i.mcu_init                               0x080013f4   Section        0  main.o(i.mcu_init)
+    i.save_menu                              0x08001460   Section        0  menu.o(i.save_menu)
+    i.setting_menu                           0x08001658   Section        0  menu.o(i.setting_menu)
+    i.ssd1306_I2C_Init                       0x080017f4   Section        0  ssd1306_i2c.o(i.ssd1306_I2C_Init)
+    i.ssd1306_I2C_Start                      0x0800187c   Section        0  ssd1306_i2c.o(i.ssd1306_I2C_Start)
+    i.ssd1306_I2C_Stop                       0x08001900   Section        0  ssd1306_i2c.o(i.ssd1306_I2C_Stop)
+    i.ssd1306_I2C_Write                      0x08001940   Section        0  ssd1306_i2c.o(i.ssd1306_I2C_Write)
+    i.ssd1306_I2C_WriteData                  0x08001970   Section        0  ssd1306_i2c.o(i.ssd1306_I2C_WriteData)
+    i.ssd1306_I2C_WriteMulti                 0x0800199c   Section        0  ssd1306_i2c.o(i.ssd1306_I2C_WriteMulti)
+    i.welcome_menu                           0x080019e0   Section        0  menu.o(i.welcome_menu)
+    .constdata                               0x08001a88   Section    10260  fonts.o(.constdata)
     .data                                    0x20000000   Section       20  system_stm32f10x.o(.data)
     .data                                    0x20000014   Section        8  main.o(.data)
     .data                                    0x2000001c   Section        4  utils.o(.data)
@@ -466,17 +503,17 @@ Image Symbol Table
     SSD1306                                  0x20000038   Data           6  ssd1306.o(.data)
     .data                                    0x20000040   Section        4  ssd1306_i2c.o(.data)
     ssd1306_I2C_Timeout                      0x20000040   Data           4  ssd1306_i2c.o(.data)
-    .data                                    0x20000044   Section       68  menu.o(.data)
-    .data                                    0x20000088   Section       24  button.o(.data)
-    .bss                                     0x200000a0   Section     1024  ssd1306.o(.bss)
-    SSD1306_Buffer                           0x200000a0   Data        1024  ssd1306.o(.bss)
-    .bss                                     0x200004a0   Section       14  menu.o(.bss)
-    .bss                                     0x200004b0   Section       96  libspace.o(.bss)
-    HEAP                                     0x20000510   Section      512  startup_stm32f10x_md.o(HEAP)
-    Heap_Mem                                 0x20000510   Data         512  startup_stm32f10x_md.o(HEAP)
-    STACK                                    0x20000710   Section     1024  startup_stm32f10x_md.o(STACK)
-    Stack_Mem                                0x20000710   Data        1024  startup_stm32f10x_md.o(STACK)
-    __initial_sp                             0x20000b10   Data           0  startup_stm32f10x_md.o(STACK)
+    .data                                    0x20000044   Section       88  menu.o(.data)
+    .data                                    0x2000009c   Section       13  button.o(.data)
+    .bss                                     0x200000ac   Section     1024  ssd1306.o(.bss)
+    SSD1306_Buffer                           0x200000ac   Data        1024  ssd1306.o(.bss)
+    .bss                                     0x200004ac   Section       68  menu.o(.bss)
+    .bss                                     0x200004f0   Section       96  libspace.o(.bss)
+    HEAP                                     0x20000550   Section      512  startup_stm32f10x_md.o(HEAP)
+    Heap_Mem                                 0x20000550   Data         512  startup_stm32f10x_md.o(HEAP)
+    STACK                                    0x20000750   Section     1024  startup_stm32f10x_md.o(STACK)
+    Stack_Mem                                0x20000750   Data        1024  startup_stm32f10x_md.o(STACK)
+    __initial_sp                             0x20000b50   Data           0  startup_stm32f10x_md.o(STACK)
 
     Global Symbols
 
@@ -650,63 +687,69 @@ Image Symbol Table
     __I$use$semihosting                      0x080004dd   Thumb Code     0  use_no_semi.o(.text)
     __use_no_semihosting_swi                 0x080004dd   Thumb Code     2  use_no_semi.o(.text)
     __semihosting_library_function           0x080004df   Thumb Code     0  indicate_semi.o(.text)
-    EXTI4_IRQHandler                         0x080004e1   Thumb Code    24  main.o(i.EXTI4_IRQHandler)
-    SSD1306_DrawFilledRectangle              0x08000501   Thumb Code    94  ssd1306.o(i.SSD1306_DrawFilledRectangle)
-    SSD1306_DrawLine                         0x0800055f   Thumb Code   330  ssd1306.o(i.SSD1306_DrawLine)
-    SSD1306_DrawPixel                        0x080006a9   Thumb Code   152  ssd1306.o(i.SSD1306_DrawPixel)
-    SSD1306_DrawRectangle                    0x08000749   Thumb Code   136  ssd1306.o(i.SSD1306_DrawRectangle)
-    SSD1306_Fill                             0x080007d1   Thumb Code    26  ssd1306.o(i.SSD1306_Fill)
-    SSD1306_GotoXY                           0x080007f1   Thumb Code     8  ssd1306.o(i.SSD1306_GotoXY)
-    SSD1306_Init                             0x080007fd   Thumb Code   372  ssd1306.o(i.SSD1306_Init)
-    SSD1306_Putc                             0x08000979   Thumb Code   164  ssd1306.o(i.SSD1306_Putc)
-    SSD1306_Puts                             0x08000a21   Thumb Code    42  ssd1306.o(i.SSD1306_Puts)
-    SSD1306_UpdateScreen                     0x08000a4d   Thumb Code    78  ssd1306.o(i.SSD1306_UpdateScreen)
-    SysTick_Handler                          0x08000b8d   Thumb Code    12  main.o(i.SysTick_Handler)
-    SystemInit                               0x08000b9d   Thumb Code    78  system_stm32f10x.o(i.SystemInit)
-    TCST_init                                0x08000bfd   Thumb Code   122  utils.o(i.TCST_init)
-    button_check                             0x08000c85   Thumb Code   276  button.o(i.button_check)
-    button_init                              0x08000dc9   Thumb Code   120  button.o(i.button_init)
-    constrain                                0x08000e51   Thumb Code    22  menu.o(i.constrain)
-    count_menu                               0x08000e69   Thumb Code    32  menu.o(i.count_menu)
-    delay                                    0x08000ea1   Thumb Code    18  utils.o(i.delay)
-    main                                     0x08000eb9   Thumb Code    64  main.o(i.main)
-    main_menu                                0x08000f09   Thumb Code    82  menu.o(i.main_menu)
-    mcu_init                                 0x08000f91   Thumb Code   100  main.o(i.mcu_init)
-    save_menu                                0x08001001   Thumb Code   250  menu.o(i.save_menu)
-    setting_menu                             0x0800114d   Thumb Code    34  menu.o(i.setting_menu)
-    ssd1306_I2C_Init                         0x08001189   Thumb Code   124  ssd1306_i2c.o(i.ssd1306_I2C_Init)
-    ssd1306_I2C_Start                        0x08001211   Thumb Code   126  ssd1306_i2c.o(i.ssd1306_I2C_Start)
-    ssd1306_I2C_Stop                         0x08001295   Thumb Code    60  ssd1306_i2c.o(i.ssd1306_I2C_Stop)
-    ssd1306_I2C_Write                        0x080012d5   Thumb Code    46  ssd1306_i2c.o(i.ssd1306_I2C_Write)
-    ssd1306_I2C_WriteData                    0x08001305   Thumb Code    40  ssd1306_i2c.o(i.ssd1306_I2C_WriteData)
-    ssd1306_I2C_WriteMulti                   0x08001331   Thumb Code    66  ssd1306_i2c.o(i.ssd1306_I2C_WriteMulti)
-    tmr_init                                 0x08001375   Thumb Code    38  utils.o(i.tmr_init)
-    Font7x10                                 0x080013a8   Data        1900  fonts.o(.constdata)
-    Font11x18                                0x08001b14   Data        3420  fonts.o(.constdata)
-    Font16x26                                0x08002870   Data        4940  fonts.o(.constdata)
-    Region$$Table$$Base                      0x08003bbc   Number         0  anon$$obj.o(Region$$Table)
-    Region$$Table$$Limit                     0x08003bdc   Number         0  anon$$obj.o(Region$$Table)
+    EXTI4_IRQHandler                         0x080004e1   Thumb Code    34  main.o(i.EXTI4_IRQHandler)
+    SSD1306_DrawFilledCircle                 0x08000511   Thumb Code   334  ssd1306.o(i.SSD1306_DrawFilledCircle)
+    SSD1306_DrawFilledRectangle              0x0800065f   Thumb Code    94  ssd1306.o(i.SSD1306_DrawFilledRectangle)
+    SSD1306_DrawLine                         0x080006bd   Thumb Code   330  ssd1306.o(i.SSD1306_DrawLine)
+    SSD1306_DrawPixel                        0x08000809   Thumb Code   152  ssd1306.o(i.SSD1306_DrawPixel)
+    SSD1306_DrawRectangle                    0x080008a9   Thumb Code   136  ssd1306.o(i.SSD1306_DrawRectangle)
+    SSD1306_Fill                             0x08000931   Thumb Code    26  ssd1306.o(i.SSD1306_Fill)
+    SSD1306_GotoXY                           0x08000951   Thumb Code     8  ssd1306.o(i.SSD1306_GotoXY)
+    SSD1306_Init                             0x0800095d   Thumb Code   372  ssd1306.o(i.SSD1306_Init)
+    SSD1306_Putc                             0x08000ad9   Thumb Code   164  ssd1306.o(i.SSD1306_Putc)
+    SSD1306_Puts                             0x08000b81   Thumb Code    42  ssd1306.o(i.SSD1306_Puts)
+    SSD1306_UpdateScreen                     0x08000bad   Thumb Code    78  ssd1306.o(i.SSD1306_UpdateScreen)
+    SysTick_Handler                          0x08000ced   Thumb Code    12  main.o(i.SysTick_Handler)
+    SystemInit                               0x08000cfd   Thumb Code    78  system_stm32f10x.o(i.SystemInit)
+    TCST_init                                0x08000d5d   Thumb Code   102  utils.o(i.TCST_init)
+    button_check                             0x08000dd1   Thumb Code   532  button.o(i.button_check)
+    button_init                              0x0800101d   Thumb Code   120  button.o(i.button_init)
+    constrain                                0x080010a5   Thumb Code    22  menu.o(i.constrain)
+    count_menu                               0x080010bd   Thumb Code   124  menu.o(i.count_menu)
+    database_menu                            0x0800116d   Thumb Code   256  menu.o(i.database_menu)
+    delay                                    0x080012b5   Thumb Code    18  utils.o(i.delay)
+    main                                     0x080012cd   Thumb Code    94  main.o(i.main)
+    main_menu                                0x0800133d   Thumb Code   110  menu.o(i.main_menu)
+    mcu_init                                 0x080013f5   Thumb Code    96  main.o(i.mcu_init)
+    save_menu                                0x08001461   Thumb Code   394  menu.o(i.save_menu)
+    setting_menu                             0x08001659   Thumb Code   322  menu.o(i.setting_menu)
+    ssd1306_I2C_Init                         0x080017f5   Thumb Code   124  ssd1306_i2c.o(i.ssd1306_I2C_Init)
+    ssd1306_I2C_Start                        0x0800187d   Thumb Code   126  ssd1306_i2c.o(i.ssd1306_I2C_Start)
+    ssd1306_I2C_Stop                         0x08001901   Thumb Code    60  ssd1306_i2c.o(i.ssd1306_I2C_Stop)
+    ssd1306_I2C_Write                        0x08001941   Thumb Code    46  ssd1306_i2c.o(i.ssd1306_I2C_Write)
+    ssd1306_I2C_WriteData                    0x08001971   Thumb Code    40  ssd1306_i2c.o(i.ssd1306_I2C_WriteData)
+    ssd1306_I2C_WriteMulti                   0x0800199d   Thumb Code    66  ssd1306_i2c.o(i.ssd1306_I2C_WriteMulti)
+    welcome_menu                             0x080019e1   Thumb Code   126  menu.o(i.welcome_menu)
+    Font7x10                                 0x08001a88   Data        1900  fonts.o(.constdata)
+    Font11x18                                0x080021f4   Data        3420  fonts.o(.constdata)
+    Font16x26                                0x08002f50   Data        4940  fonts.o(.constdata)
+    Region$$Table$$Base                      0x0800429c   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x080042bc   Number         0  anon$$obj.o(Region$$Table)
     SystemCoreClock                          0x20000000   Data           4  system_stm32f10x.o(.data)
     AHBPrescTable                            0x20000004   Data          16  system_stm32f10x.o(.data)
-    pointer                                  0x20000014   Data           1  main.o(.data)
-    smd_counter                              0x20000018   Data           4  main.o(.data)
-    ticks_delay                              0x2000001c   Data           4  utils.o(.data)
+    smd_counter                              0x20000014   Data           4  main.o(.data)
+    smd_counter_new                          0x20000018   Data           4  main.o(.data)
+    sys_tick                                 0x2000001c   Data           4  utils.o(.data)
     Font_7x10                                0x20000020   Data           8  fonts.o(.data)
     Font_11x18                               0x20000028   Data           8  fonts.o(.data)
     Font_16x26                               0x20000030   Data           8  fonts.o(.data)
-    state                                    0x20000044   Data           1  menu.o(.data)
-    event                                    0x20000045   Data           1  menu.o(.data)
-    transition_table                         0x20000048   Data          64  menu.o(.data)
-    short_state                              0x20000088   Data           1  button.o(.data)
-    long_state                               0x20000089   Data           1  button.o(.data)
-    time_key1                                0x2000008c   Data           4  button.o(.data)
-    flag_key2_press                          0x20000090   Data           1  button.o(.data)
-    time_key2_press                          0x20000094   Data           4  button.o(.data)
-    flag_key3_press                          0x20000098   Data           1  button.o(.data)
-    time_key3_press                          0x2000009c   Data           4  button.o(.data)
-    str                                      0x200004a0   Data          14  menu.o(.bss)
-    __libspace_start                         0x200004b0   Data          96  libspace.o(.bss)
-    __temporary_stack_top$libspace           0x20000510   Data           0  libspace.o(.bss)
+    pointer                                  0x20000044   Data           1  menu.o(.data)
+    state                                    0x20000045   Data           1  menu.o(.data)
+    event                                    0x20000046   Data           1  menu.o(.data)
+    step_size                                0x20000047   Data           1  menu.o(.data)
+    edit_step_flag                           0x20000048   Data           1  menu.o(.data)
+    continue_counting_flag                   0x20000049   Data           1  menu.o(.data)
+    db_element                               0x2000004a   Data           1  menu.o(.data)
+    edit_db_flag                             0x2000004b   Data           1  menu.o(.data)
+    transition_table                         0x2000004c   Data          80  menu.o(.data)
+    ok_time                                  0x2000009c   Data           4  button.o(.data)
+    left_time                                0x200000a0   Data           4  button.o(.data)
+    right_time                               0x200000a4   Data           4  button.o(.data)
+    btn                                      0x200000a8   Data           1  button.o(.data)
+    str                                      0x200004ac   Data          14  menu.o(.bss)
+    database                                 0x200004bc   Data          52  menu.o(.bss)
+    __libspace_start                         0x200004f0   Data          96  libspace.o(.bss)
+    __temporary_stack_top$libspace           0x20000550   Data           0  libspace.o(.bss)
 
 
 
@@ -716,147 +759,149 @@ Memory Map of the image
 
   Image Entry point : 0x08000191
 
-  Load Region LR_1 (Base: 0x08000000, Size: 0x00003c7c, Max: 0xffffffff, ABSOLUTE)
+  Load Region LR_1 (Base: 0x08000000, Size: 0x00004368, Max: 0xffffffff, ABSOLUTE)
 
-    Execution Region ER_RO (Exec base: 0x08000000, Load base: 0x08000000, Size: 0x00003bdc, Max: 0xffffffff, ABSOLUTE)
+    Execution Region ER_RO (Exec base: 0x08000000, Load base: 0x08000000, Size: 0x000042bc, Max: 0xffffffff, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
     0x08000000   0x08000000   0x000000ec   Data   RO            3    RESET               startup_stm32f10x_md.o
-    0x080000ec   0x080000ec   0x00000008   Code   RO          493  * !!!main             c_w.l(__main.o)
-    0x080000f4   0x080000f4   0x00000034   Code   RO          665    !!!scatter          c_w.l(__scatter.o)
-    0x08000128   0x08000128   0x0000001a   Code   RO          667    !!handler_copy      c_w.l(__scatter_copy.o)
+    0x080000ec   0x080000ec   0x00000008   Code   RO          477  * !!!main             c_w.l(__main.o)
+    0x080000f4   0x080000f4   0x00000034   Code   RO          649    !!!scatter          c_w.l(__scatter.o)
+    0x08000128   0x08000128   0x0000001a   Code   RO          651    !!handler_copy      c_w.l(__scatter_copy.o)
     0x08000142   0x08000142   0x00000002   PAD
-    0x08000144   0x08000144   0x0000001c   Code   RO          669    !!handler_zi        c_w.l(__scatter_zi.o)
-    0x08000160   0x08000160   0x00000000   Code   RO          486    .ARM.Collect$$_printf_percent$$00000000  c_w.l(_printf_percent.o)
-    0x08000160   0x08000160   0x00000006   Code   RO          485    .ARM.Collect$$_printf_percent$$0000000A  c_w.l(_printf_u.o)
-    0x08000166   0x08000166   0x00000004   Code   RO          502    .ARM.Collect$$_printf_percent$$00000017  c_w.l(_printf_percent_end.o)
-    0x0800016a   0x0800016a   0x00000002   Code   RO          533    .ARM.Collect$$libinit$$00000000  c_w.l(libinit.o)
-    0x0800016c   0x0800016c   0x00000000   Code   RO          540    .ARM.Collect$$libinit$$00000002  c_w.l(libinit2.o)
-    0x0800016c   0x0800016c   0x00000000   Code   RO          542    .ARM.Collect$$libinit$$00000004  c_w.l(libinit2.o)
-    0x0800016c   0x0800016c   0x00000000   Code   RO          545    .ARM.Collect$$libinit$$0000000A  c_w.l(libinit2.o)
-    0x0800016c   0x0800016c   0x00000000   Code   RO          547    .ARM.Collect$$libinit$$0000000C  c_w.l(libinit2.o)
-    0x0800016c   0x0800016c   0x00000000   Code   RO          549    .ARM.Collect$$libinit$$0000000E  c_w.l(libinit2.o)
-    0x0800016c   0x0800016c   0x00000000   Code   RO          552    .ARM.Collect$$libinit$$00000011  c_w.l(libinit2.o)
-    0x0800016c   0x0800016c   0x00000000   Code   RO          554    .ARM.Collect$$libinit$$00000013  c_w.l(libinit2.o)
-    0x0800016c   0x0800016c   0x00000000   Code   RO          556    .ARM.Collect$$libinit$$00000015  c_w.l(libinit2.o)
-    0x0800016c   0x0800016c   0x00000000   Code   RO          558    .ARM.Collect$$libinit$$00000017  c_w.l(libinit2.o)
-    0x0800016c   0x0800016c   0x00000000   Code   RO          560    .ARM.Collect$$libinit$$00000019  c_w.l(libinit2.o)
-    0x0800016c   0x0800016c   0x00000000   Code   RO          562    .ARM.Collect$$libinit$$0000001B  c_w.l(libinit2.o)
-    0x0800016c   0x0800016c   0x00000000   Code   RO          564    .ARM.Collect$$libinit$$0000001D  c_w.l(libinit2.o)
-    0x0800016c   0x0800016c   0x00000000   Code   RO          566    .ARM.Collect$$libinit$$0000001F  c_w.l(libinit2.o)
-    0x0800016c   0x0800016c   0x00000000   Code   RO          568    .ARM.Collect$$libinit$$00000021  c_w.l(libinit2.o)
-    0x0800016c   0x0800016c   0x00000000   Code   RO          570    .ARM.Collect$$libinit$$00000023  c_w.l(libinit2.o)
-    0x0800016c   0x0800016c   0x00000000   Code   RO          572    .ARM.Collect$$libinit$$00000025  c_w.l(libinit2.o)
-    0x0800016c   0x0800016c   0x00000000   Code   RO          576    .ARM.Collect$$libinit$$0000002C  c_w.l(libinit2.o)
-    0x0800016c   0x0800016c   0x00000000   Code   RO          578    .ARM.Collect$$libinit$$0000002E  c_w.l(libinit2.o)
-    0x0800016c   0x0800016c   0x00000000   Code   RO          580    .ARM.Collect$$libinit$$00000030  c_w.l(libinit2.o)
-    0x0800016c   0x0800016c   0x00000000   Code   RO          582    .ARM.Collect$$libinit$$00000032  c_w.l(libinit2.o)
-    0x0800016c   0x0800016c   0x00000002   Code   RO          583    .ARM.Collect$$libinit$$00000033  c_w.l(libinit2.o)
-    0x0800016e   0x0800016e   0x00000002   Code   RO          603    .ARM.Collect$$libshutdown$$00000000  c_w.l(libshutdown.o)
-    0x08000170   0x08000170   0x00000000   Code   RO          616    .ARM.Collect$$libshutdown$$00000002  c_w.l(libshutdown2.o)
-    0x08000170   0x08000170   0x00000000   Code   RO          618    .ARM.Collect$$libshutdown$$00000004  c_w.l(libshutdown2.o)
-    0x08000170   0x08000170   0x00000000   Code   RO          620    .ARM.Collect$$libshutdown$$00000006  c_w.l(libshutdown2.o)
-    0x08000170   0x08000170   0x00000000   Code   RO          623    .ARM.Collect$$libshutdown$$00000009  c_w.l(libshutdown2.o)
-    0x08000170   0x08000170   0x00000000   Code   RO          626    .ARM.Collect$$libshutdown$$0000000C  c_w.l(libshutdown2.o)
-    0x08000170   0x08000170   0x00000000   Code   RO          628    .ARM.Collect$$libshutdown$$0000000E  c_w.l(libshutdown2.o)
-    0x08000170   0x08000170   0x00000000   Code   RO          631    .ARM.Collect$$libshutdown$$00000011  c_w.l(libshutdown2.o)
-    0x08000170   0x08000170   0x00000002   Code   RO          632    .ARM.Collect$$libshutdown$$00000012  c_w.l(libshutdown2.o)
-    0x08000172   0x08000172   0x00000000   Code   RO          495    .ARM.Collect$$rtentry$$00000000  c_w.l(__rtentry.o)
-    0x08000172   0x08000172   0x00000000   Code   RO          506    .ARM.Collect$$rtentry$$00000002  c_w.l(__rtentry2.o)
-    0x08000172   0x08000172   0x00000006   Code   RO          518    .ARM.Collect$$rtentry$$00000004  c_w.l(__rtentry4.o)
-    0x08000178   0x08000178   0x00000000   Code   RO          508    .ARM.Collect$$rtentry$$00000009  c_w.l(__rtentry2.o)
-    0x08000178   0x08000178   0x00000004   Code   RO          509    .ARM.Collect$$rtentry$$0000000A  c_w.l(__rtentry2.o)
-    0x0800017c   0x0800017c   0x00000000   Code   RO          511    .ARM.Collect$$rtentry$$0000000C  c_w.l(__rtentry2.o)
-    0x0800017c   0x0800017c   0x00000008   Code   RO          512    .ARM.Collect$$rtentry$$0000000D  c_w.l(__rtentry2.o)
-    0x08000184   0x08000184   0x00000002   Code   RO          537    .ARM.Collect$$rtexit$$00000000  c_w.l(rtexit.o)
-    0x08000186   0x08000186   0x00000000   Code   RO          585    .ARM.Collect$$rtexit$$00000002  c_w.l(rtexit2.o)
-    0x08000186   0x08000186   0x00000004   Code   RO          586    .ARM.Collect$$rtexit$$00000003  c_w.l(rtexit2.o)
-    0x0800018a   0x0800018a   0x00000006   Code   RO          587    .ARM.Collect$$rtexit$$00000004  c_w.l(rtexit2.o)
+    0x08000144   0x08000144   0x0000001c   Code   RO          653    !!handler_zi        c_w.l(__scatter_zi.o)
+    0x08000160   0x08000160   0x00000000   Code   RO          470    .ARM.Collect$$_printf_percent$$00000000  c_w.l(_printf_percent.o)
+    0x08000160   0x08000160   0x00000006   Code   RO          469    .ARM.Collect$$_printf_percent$$0000000A  c_w.l(_printf_u.o)
+    0x08000166   0x08000166   0x00000004   Code   RO          486    .ARM.Collect$$_printf_percent$$00000017  c_w.l(_printf_percent_end.o)
+    0x0800016a   0x0800016a   0x00000002   Code   RO          517    .ARM.Collect$$libinit$$00000000  c_w.l(libinit.o)
+    0x0800016c   0x0800016c   0x00000000   Code   RO          524    .ARM.Collect$$libinit$$00000002  c_w.l(libinit2.o)
+    0x0800016c   0x0800016c   0x00000000   Code   RO          526    .ARM.Collect$$libinit$$00000004  c_w.l(libinit2.o)
+    0x0800016c   0x0800016c   0x00000000   Code   RO          529    .ARM.Collect$$libinit$$0000000A  c_w.l(libinit2.o)
+    0x0800016c   0x0800016c   0x00000000   Code   RO          531    .ARM.Collect$$libinit$$0000000C  c_w.l(libinit2.o)
+    0x0800016c   0x0800016c   0x00000000   Code   RO          533    .ARM.Collect$$libinit$$0000000E  c_w.l(libinit2.o)
+    0x0800016c   0x0800016c   0x00000000   Code   RO          536    .ARM.Collect$$libinit$$00000011  c_w.l(libinit2.o)
+    0x0800016c   0x0800016c   0x00000000   Code   RO          538    .ARM.Collect$$libinit$$00000013  c_w.l(libinit2.o)
+    0x0800016c   0x0800016c   0x00000000   Code   RO          540    .ARM.Collect$$libinit$$00000015  c_w.l(libinit2.o)
+    0x0800016c   0x0800016c   0x00000000   Code   RO          542    .ARM.Collect$$libinit$$00000017  c_w.l(libinit2.o)
+    0x0800016c   0x0800016c   0x00000000   Code   RO          544    .ARM.Collect$$libinit$$00000019  c_w.l(libinit2.o)
+    0x0800016c   0x0800016c   0x00000000   Code   RO          546    .ARM.Collect$$libinit$$0000001B  c_w.l(libinit2.o)
+    0x0800016c   0x0800016c   0x00000000   Code   RO          548    .ARM.Collect$$libinit$$0000001D  c_w.l(libinit2.o)
+    0x0800016c   0x0800016c   0x00000000   Code   RO          550    .ARM.Collect$$libinit$$0000001F  c_w.l(libinit2.o)
+    0x0800016c   0x0800016c   0x00000000   Code   RO          552    .ARM.Collect$$libinit$$00000021  c_w.l(libinit2.o)
+    0x0800016c   0x0800016c   0x00000000   Code   RO          554    .ARM.Collect$$libinit$$00000023  c_w.l(libinit2.o)
+    0x0800016c   0x0800016c   0x00000000   Code   RO          556    .ARM.Collect$$libinit$$00000025  c_w.l(libinit2.o)
+    0x0800016c   0x0800016c   0x00000000   Code   RO          560    .ARM.Collect$$libinit$$0000002C  c_w.l(libinit2.o)
+    0x0800016c   0x0800016c   0x00000000   Code   RO          562    .ARM.Collect$$libinit$$0000002E  c_w.l(libinit2.o)
+    0x0800016c   0x0800016c   0x00000000   Code   RO          564    .ARM.Collect$$libinit$$00000030  c_w.l(libinit2.o)
+    0x0800016c   0x0800016c   0x00000000   Code   RO          566    .ARM.Collect$$libinit$$00000032  c_w.l(libinit2.o)
+    0x0800016c   0x0800016c   0x00000002   Code   RO          567    .ARM.Collect$$libinit$$00000033  c_w.l(libinit2.o)
+    0x0800016e   0x0800016e   0x00000002   Code   RO          587    .ARM.Collect$$libshutdown$$00000000  c_w.l(libshutdown.o)
+    0x08000170   0x08000170   0x00000000   Code   RO          600    .ARM.Collect$$libshutdown$$00000002  c_w.l(libshutdown2.o)
+    0x08000170   0x08000170   0x00000000   Code   RO          602    .ARM.Collect$$libshutdown$$00000004  c_w.l(libshutdown2.o)
+    0x08000170   0x08000170   0x00000000   Code   RO          604    .ARM.Collect$$libshutdown$$00000006  c_w.l(libshutdown2.o)
+    0x08000170   0x08000170   0x00000000   Code   RO          607    .ARM.Collect$$libshutdown$$00000009  c_w.l(libshutdown2.o)
+    0x08000170   0x08000170   0x00000000   Code   RO          610    .ARM.Collect$$libshutdown$$0000000C  c_w.l(libshutdown2.o)
+    0x08000170   0x08000170   0x00000000   Code   RO          612    .ARM.Collect$$libshutdown$$0000000E  c_w.l(libshutdown2.o)
+    0x08000170   0x08000170   0x00000000   Code   RO          615    .ARM.Collect$$libshutdown$$00000011  c_w.l(libshutdown2.o)
+    0x08000170   0x08000170   0x00000002   Code   RO          616    .ARM.Collect$$libshutdown$$00000012  c_w.l(libshutdown2.o)
+    0x08000172   0x08000172   0x00000000   Code   RO          479    .ARM.Collect$$rtentry$$00000000  c_w.l(__rtentry.o)
+    0x08000172   0x08000172   0x00000000   Code   RO          490    .ARM.Collect$$rtentry$$00000002  c_w.l(__rtentry2.o)
+    0x08000172   0x08000172   0x00000006   Code   RO          502    .ARM.Collect$$rtentry$$00000004  c_w.l(__rtentry4.o)
+    0x08000178   0x08000178   0x00000000   Code   RO          492    .ARM.Collect$$rtentry$$00000009  c_w.l(__rtentry2.o)
+    0x08000178   0x08000178   0x00000004   Code   RO          493    .ARM.Collect$$rtentry$$0000000A  c_w.l(__rtentry2.o)
+    0x0800017c   0x0800017c   0x00000000   Code   RO          495    .ARM.Collect$$rtentry$$0000000C  c_w.l(__rtentry2.o)
+    0x0800017c   0x0800017c   0x00000008   Code   RO          496    .ARM.Collect$$rtentry$$0000000D  c_w.l(__rtentry2.o)
+    0x08000184   0x08000184   0x00000002   Code   RO          521    .ARM.Collect$$rtexit$$00000000  c_w.l(rtexit.o)
+    0x08000186   0x08000186   0x00000000   Code   RO          569    .ARM.Collect$$rtexit$$00000002  c_w.l(rtexit2.o)
+    0x08000186   0x08000186   0x00000004   Code   RO          570    .ARM.Collect$$rtexit$$00000003  c_w.l(rtexit2.o)
+    0x0800018a   0x0800018a   0x00000006   Code   RO          571    .ARM.Collect$$rtexit$$00000004  c_w.l(rtexit2.o)
     0x08000190   0x08000190   0x00000040   Code   RO            4  * .text               startup_stm32f10x_md.o
-    0x080001d0   0x080001d0   0x00000028   Code   RO          459    .text               c_w.l(noretval__2sprintf.o)
-    0x080001f8   0x080001f8   0x00000068   Code   RO          461    .text               c_w.l(__printf.o)
-    0x08000260   0x08000260   0x00000078   Code   RO          463    .text               c_w.l(_printf_dec.o)
-    0x080002d8   0x080002d8   0x00000010   Code   RO          489    .text               c_w.l(aeabi_memset.o)
-    0x080002e8   0x080002e8   0x00000006   Code   RO          491    .text               c_w.l(heapauxi.o)
-    0x080002ee   0x080002ee   0x000000b2   Code   RO          496    .text               c_w.l(_printf_intcommon.o)
-    0x080003a0   0x080003a0   0x00000030   Code   RO          498    .text               c_w.l(_printf_char_common.o)
-    0x080003d0   0x080003d0   0x0000000a   Code   RO          500    .text               c_w.l(_sputc.o)
-    0x080003da   0x080003da   0x00000044   Code   RO          503    .text               c_w.l(rt_memclr.o)
-    0x0800041e   0x0800041e   0x0000004e   Code   RO          522    .text               c_w.l(rt_memclr_w.o)
-    0x0800046c   0x0800046c   0x0000004a   Code   RO          524    .text               c_w.l(sys_stackheap_outer.o)
-    0x080004b6   0x080004b6   0x00000012   Code   RO          526    .text               c_w.l(exit.o)
-    0x080004c8   0x080004c8   0x00000008   Code   RO          534    .text               c_w.l(libspace.o)
-    0x080004d0   0x080004d0   0x0000000c   Code   RO          595    .text               c_w.l(sys_exit.o)
-    0x080004dc   0x080004dc   0x00000002   Code   RO          606    .text               c_w.l(use_no_semi.o)
-    0x080004de   0x080004de   0x00000000   Code   RO          608    .text               c_w.l(indicate_semi.o)
+    0x080001d0   0x080001d0   0x00000028   Code   RO          443    .text               c_w.l(noretval__2sprintf.o)
+    0x080001f8   0x080001f8   0x00000068   Code   RO          445    .text               c_w.l(__printf.o)
+    0x08000260   0x08000260   0x00000078   Code   RO          447    .text               c_w.l(_printf_dec.o)
+    0x080002d8   0x080002d8   0x00000010   Code   RO          473    .text               c_w.l(aeabi_memset.o)
+    0x080002e8   0x080002e8   0x00000006   Code   RO          475    .text               c_w.l(heapauxi.o)
+    0x080002ee   0x080002ee   0x000000b2   Code   RO          480    .text               c_w.l(_printf_intcommon.o)
+    0x080003a0   0x080003a0   0x00000030   Code   RO          482    .text               c_w.l(_printf_char_common.o)
+    0x080003d0   0x080003d0   0x0000000a   Code   RO          484    .text               c_w.l(_sputc.o)
+    0x080003da   0x080003da   0x00000044   Code   RO          487    .text               c_w.l(rt_memclr.o)
+    0x0800041e   0x0800041e   0x0000004e   Code   RO          506    .text               c_w.l(rt_memclr_w.o)
+    0x0800046c   0x0800046c   0x0000004a   Code   RO          508    .text               c_w.l(sys_stackheap_outer.o)
+    0x080004b6   0x080004b6   0x00000012   Code   RO          510    .text               c_w.l(exit.o)
+    0x080004c8   0x080004c8   0x00000008   Code   RO          518    .text               c_w.l(libspace.o)
+    0x080004d0   0x080004d0   0x0000000c   Code   RO          579    .text               c_w.l(sys_exit.o)
+    0x080004dc   0x080004dc   0x00000002   Code   RO          590    .text               c_w.l(use_no_semi.o)
+    0x080004de   0x080004de   0x00000000   Code   RO          592    .text               c_w.l(indicate_semi.o)
     0x080004de   0x080004de   0x00000002   PAD
-    0x080004e0   0x080004e0   0x00000020   Code   RO           68    i.EXTI4_IRQHandler  main.o
-    0x08000500   0x08000500   0x0000005e   Code   RO          219    i.SSD1306_DrawFilledRectangle  ssd1306.o
-    0x0800055e   0x0800055e   0x0000014a   Code   RO          221    i.SSD1306_DrawLine  ssd1306.o
-    0x080006a8   0x080006a8   0x000000a0   Code   RO          222    i.SSD1306_DrawPixel  ssd1306.o
-    0x08000748   0x08000748   0x00000088   Code   RO          223    i.SSD1306_DrawRectangle  ssd1306.o
-    0x080007d0   0x080007d0   0x00000020   Code   RO          225    i.SSD1306_Fill      ssd1306.o
-    0x080007f0   0x080007f0   0x0000000c   Code   RO          226    i.SSD1306_GotoXY    ssd1306.o
-    0x080007fc   0x080007fc   0x0000017c   Code   RO          227    i.SSD1306_Init      ssd1306.o
-    0x08000978   0x08000978   0x000000a8   Code   RO          230    i.SSD1306_Putc      ssd1306.o
-    0x08000a20   0x08000a20   0x0000002a   Code   RO          231    i.SSD1306_Puts      ssd1306.o
-    0x08000a4a   0x08000a4a   0x00000002   PAD
-    0x08000a4c   0x08000a4c   0x00000058   Code   RO          233    i.SSD1306_UpdateScreen  ssd1306.o
-    0x08000aa4   0x08000aa4   0x00000008   Code   RO           24    i.SetSysClock       system_stm32f10x.o
-    0x08000aac   0x08000aac   0x000000e0   Code   RO           25    i.SetSysClockTo72   system_stm32f10x.o
-    0x08000b8c   0x08000b8c   0x00000010   Code   RO           69    i.SysTick_Handler   main.o
-    0x08000b9c   0x08000b9c   0x00000060   Code   RO           27    i.SystemInit        system_stm32f10x.o
-    0x08000bfc   0x08000bfc   0x00000088   Code   RO          161    i.TCST_init         utils.o
-    0x08000c84   0x08000c84   0x00000144   Code   RO          434    i.button_check      button.o
-    0x08000dc8   0x08000dc8   0x00000088   Code   RO          435    i.button_init       button.o
-    0x08000e50   0x08000e50   0x00000016   Code   RO          382    i.constrain         menu.o
-    0x08000e66   0x08000e66   0x00000002   PAD
-    0x08000e68   0x08000e68   0x00000038   Code   RO          383    i.count_menu        menu.o
-    0x08000ea0   0x08000ea0   0x00000018   Code   RO          162    i.delay             utils.o
-    0x08000eb8   0x08000eb8   0x00000050   Code   RO           70    i.main              main.o
-    0x08000f08   0x08000f08   0x00000088   Code   RO          385    i.main_menu         menu.o
-    0x08000f90   0x08000f90   0x00000070   Code   RO           71    i.mcu_init          main.o
-    0x08001000   0x08001000   0x0000014c   Code   RO          386    i.save_menu         menu.o
-    0x0800114c   0x0800114c   0x0000003c   Code   RO          387    i.setting_menu      menu.o
-    0x08001188   0x08001188   0x00000088   Code   RO          332    i.ssd1306_I2C_Init  ssd1306_i2c.o
-    0x08001210   0x08001210   0x00000084   Code   RO          334    i.ssd1306_I2C_Start  ssd1306_i2c.o
-    0x08001294   0x08001294   0x00000040   Code   RO          335    i.ssd1306_I2C_Stop  ssd1306_i2c.o
-    0x080012d4   0x080012d4   0x0000002e   Code   RO          336    i.ssd1306_I2C_Write  ssd1306_i2c.o
-    0x08001302   0x08001302   0x00000002   PAD
-    0x08001304   0x08001304   0x0000002c   Code   RO          337    i.ssd1306_I2C_WriteData  ssd1306_i2c.o
-    0x08001330   0x08001330   0x00000042   Code   RO          338    i.ssd1306_I2C_WriteMulti  ssd1306_i2c.o
-    0x08001372   0x08001372   0x00000002   PAD
-    0x08001374   0x08001374   0x00000034   Code   RO          163    i.tmr_init          utils.o
-    0x080013a8   0x080013a8   0x00002814   Data   RO          196    .constdata          fonts.o
-    0x08003bbc   0x08003bbc   0x00000020   Data   RO          663    Region$$Table       anon$$obj.o
+    0x080004e0   0x080004e0   0x00000030   Code   RO           68    i.EXTI4_IRQHandler  main.o
+    0x08000510   0x08000510   0x0000014e   Code   RO          190    i.SSD1306_DrawFilledCircle  ssd1306.o
+    0x0800065e   0x0800065e   0x0000005e   Code   RO          191    i.SSD1306_DrawFilledRectangle  ssd1306.o
+    0x080006bc   0x080006bc   0x0000014a   Code   RO          193    i.SSD1306_DrawLine  ssd1306.o
+    0x08000806   0x08000806   0x00000002   PAD
+    0x08000808   0x08000808   0x000000a0   Code   RO          194    i.SSD1306_DrawPixel  ssd1306.o
+    0x080008a8   0x080008a8   0x00000088   Code   RO          195    i.SSD1306_DrawRectangle  ssd1306.o
+    0x08000930   0x08000930   0x00000020   Code   RO          197    i.SSD1306_Fill      ssd1306.o
+    0x08000950   0x08000950   0x0000000c   Code   RO          198    i.SSD1306_GotoXY    ssd1306.o
+    0x0800095c   0x0800095c   0x0000017c   Code   RO          199    i.SSD1306_Init      ssd1306.o
+    0x08000ad8   0x08000ad8   0x000000a8   Code   RO          202    i.SSD1306_Putc      ssd1306.o
+    0x08000b80   0x08000b80   0x0000002a   Code   RO          203    i.SSD1306_Puts      ssd1306.o
+    0x08000baa   0x08000baa   0x00000002   PAD
+    0x08000bac   0x08000bac   0x00000058   Code   RO          205    i.SSD1306_UpdateScreen  ssd1306.o
+    0x08000c04   0x08000c04   0x00000008   Code   RO           24    i.SetSysClock       system_stm32f10x.o
+    0x08000c0c   0x08000c0c   0x000000e0   Code   RO           25    i.SetSysClockTo72   system_stm32f10x.o
+    0x08000cec   0x08000cec   0x00000010   Code   RO           69    i.SysTick_Handler   main.o
+    0x08000cfc   0x08000cfc   0x00000060   Code   RO           27    i.SystemInit        system_stm32f10x.o
+    0x08000d5c   0x08000d5c   0x00000074   Code   RO          143    i.TCST_init         utils.o
+    0x08000dd0   0x08000dd0   0x0000024c   Code   RO          418    i.button_check      button.o
+    0x0800101c   0x0800101c   0x00000088   Code   RO          419    i.button_init       button.o
+    0x080010a4   0x080010a4   0x00000016   Code   RO          354    i.constrain         menu.o
+    0x080010ba   0x080010ba   0x00000002   PAD
+    0x080010bc   0x080010bc   0x000000b0   Code   RO          355    i.count_menu        menu.o
+    0x0800116c   0x0800116c   0x00000148   Code   RO          356    i.database_menu     menu.o
+    0x080012b4   0x080012b4   0x00000018   Code   RO          144    i.delay             utils.o
+    0x080012cc   0x080012cc   0x00000070   Code   RO           70    i.main              main.o
+    0x0800133c   0x0800133c   0x000000b8   Code   RO          358    i.main_menu         menu.o
+    0x080013f4   0x080013f4   0x0000006c   Code   RO           71    i.mcu_init          main.o
+    0x08001460   0x08001460   0x000001f8   Code   RO          359    i.save_menu         menu.o
+    0x08001658   0x08001658   0x0000019c   Code   RO          360    i.setting_menu      menu.o
+    0x080017f4   0x080017f4   0x00000088   Code   RO          304    i.ssd1306_I2C_Init  ssd1306_i2c.o
+    0x0800187c   0x0800187c   0x00000084   Code   RO          306    i.ssd1306_I2C_Start  ssd1306_i2c.o
+    0x08001900   0x08001900   0x00000040   Code   RO          307    i.ssd1306_I2C_Stop  ssd1306_i2c.o
+    0x08001940   0x08001940   0x0000002e   Code   RO          308    i.ssd1306_I2C_Write  ssd1306_i2c.o
+    0x0800196e   0x0800196e   0x00000002   PAD
+    0x08001970   0x08001970   0x0000002c   Code   RO          309    i.ssd1306_I2C_WriteData  ssd1306_i2c.o
+    0x0800199c   0x0800199c   0x00000042   Code   RO          310    i.ssd1306_I2C_WriteMulti  ssd1306_i2c.o
+    0x080019de   0x080019de   0x00000002   PAD
+    0x080019e0   0x080019e0   0x000000a8   Code   RO          361    i.welcome_menu      menu.o
+    0x08001a88   0x08001a88   0x00002814   Data   RO          168    .constdata          fonts.o
+    0x0800429c   0x0800429c   0x00000020   Data   RO          647    Region$$Table       anon$$obj.o
 
 
-    Execution Region ER_RW (Exec base: 0x20000000, Load base: 0x08003bdc, Size: 0x000000a0, Max: 0xffffffff, ABSOLUTE)
-
-    Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
-
-    0x20000000   0x08003bdc   0x00000014   Data   RW           28    .data               system_stm32f10x.o
-    0x20000014   0x08003bf0   0x00000008   Data   RW           72    .data               main.o
-    0x2000001c   0x08003bf8   0x00000004   Data   RW          164    .data               utils.o
-    0x20000020   0x08003bfc   0x00000018   Data   RW          197    .data               fonts.o
-    0x20000038   0x08003c14   0x00000006   Data   RW          235    .data               ssd1306.o
-    0x2000003e   0x08003c1a   0x00000002   PAD
-    0x20000040   0x08003c1c   0x00000004   Data   RW          339    .data               ssd1306_i2c.o
-    0x20000044   0x08003c20   0x00000044   Data   RW          389    .data               menu.o
-    0x20000088   0x08003c64   0x00000018   Data   RW          436    .data               button.o
-
-
-    Execution Region ER_ZI (Exec base: 0x200000a0, Load base: 0x08003c7c, Size: 0x00000a70, Max: 0xffffffff, ABSOLUTE)
+    Execution Region ER_RW (Exec base: 0x20000000, Load base: 0x080042bc, Size: 0x000000ac, Max: 0xffffffff, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x200000a0        -       0x00000400   Zero   RW          234    .bss                ssd1306.o
-    0x200004a0        -       0x0000000e   Zero   RW          388    .bss                menu.o
-    0x200004ae   0x08003c7c   0x00000002   PAD
-    0x200004b0        -       0x00000060   Zero   RW          535    .bss                c_w.l(libspace.o)
-    0x20000510        -       0x00000200   Zero   RW            2    HEAP                startup_stm32f10x_md.o
-    0x20000710        -       0x00000400   Zero   RW            1    STACK               startup_stm32f10x_md.o
+    0x20000000   0x080042bc   0x00000014   Data   RW           28    .data               system_stm32f10x.o
+    0x20000014   0x080042d0   0x00000008   Data   RW           72    .data               main.o
+    0x2000001c   0x080042d8   0x00000004   Data   RW          145    .data               utils.o
+    0x20000020   0x080042dc   0x00000018   Data   RW          169    .data               fonts.o
+    0x20000038   0x080042f4   0x00000006   Data   RW          207    .data               ssd1306.o
+    0x2000003e   0x080042fa   0x00000002   PAD
+    0x20000040   0x080042fc   0x00000004   Data   RW          311    .data               ssd1306_i2c.o
+    0x20000044   0x08004300   0x00000058   Data   RW          363    .data               menu.o
+    0x2000009c   0x08004358   0x0000000d   Data   RW          420    .data               button.o
+
+
+    Execution Region ER_ZI (Exec base: 0x200000ac, Load base: 0x08004368, Size: 0x00000aa4, Max: 0xffffffff, ABSOLUTE)
+
+    Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
+
+    0x200000ac        -       0x00000400   Zero   RW          206    .bss                ssd1306.o
+    0x200004ac        -       0x00000044   Zero   RW          362    .bss                menu.o
+    0x200004f0        -       0x00000060   Zero   RW          519    .bss                c_w.l(libspace.o)
+    0x20000550        -       0x00000200   Zero   RW            2    HEAP                startup_stm32f10x_md.o
+    0x20000750        -       0x00000400   Zero   RW            1    STACK               startup_stm32f10x_md.o
 
 
 ==============================================================================
@@ -866,21 +911,21 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Object Name
 
-       460         64          0         24          0       1584   button.o
+       724         72          0         13          0       1832   button.o
          0          0          0          0          0       1444   core_cm3.o
          0          0      10260         24          0       1163   fonts.o
-       240         40          0          8          0      18422   main.o
-       606        186          0         68         14       2987   menu.o
-      1442         40          0          6       1024       7593   ssd1306.o
+       284         48          0          8          0      18606   main.o
+      1794        440          0         88         68       4615   menu.o
+      1776         40          0          6       1024       8388   ssd1306.o
        488         26          0          4          0       4175   ssd1306_i2c.o
         64         26        236          0       1536        812   startup_stm32f10x_md.o
        328         28          0         20          0     206813   system_stm32f10x.o
-       212         34          0          4          0      16852   utils.o
+       140         20          0          4          0       1303   utils.o
 
     ----------------------------------------------------------------------
-      3848        444      10528        160       2576     261845   Object Totals
+      5608        700      10528        172       2628     249151   Object Totals
          0          0         32          0          0          0   (incl. Generated)
-         8          0          0          2          2          0   (incl. Padding)
+        10          0          0          5          0          0   (incl. Padding)
 
     ----------------------------------------------------------------------
 
@@ -939,15 +984,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-      4796        488      10528        160       2672     260969   Grand Totals
-      4796        488      10528        160       2672     260969   ELF Image Totals
-      4796        488      10528        160          0          0   ROM Totals
+      6556        744      10528        172       2724     248171   Grand Totals
+      6556        744      10528        172       2724     248171   ELF Image Totals
+      6556        744      10528        172          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                15324 (  14.96kB)
-    Total RW  Size (RW Data + ZI Data)              2832 (   2.77kB)
-    Total ROM Size (Code + RO Data + RW Data)      15484 (  15.12kB)
+    Total RO  Size (Code + RO Data)                17084 (  16.68kB)
+    Total RW  Size (RW Data + ZI Data)              2896 (   2.83kB)
+    Total ROM Size (Code + RO Data + RW Data)      17256 (  16.85kB)
 
 ==============================================================================
 

@@ -1,21 +1,25 @@
 #include "main.h"
 
-volatile int8_t pointer = 0;
-volatile uint32_t smd_counter = 0;
+volatile uint32_t smd_counter = 0, smd_counter_new = 0;
 
 int main() {
 	
 	mcu_init();
+	welcome_menu();
 	
 	while(1) {
-		
-		if (state != STATE_SAVE_MENU &&
-			state != STATE_SETTING_MENU) {			//so that the pointer is at zero position
-			pointer = 0;
+		if (state == STATE_COUNT_MENU) {
+			NVIC_EnableIRQ(EXTI4_IRQn);
 		}
-		SSD1306_Fill(SSD1306_COLOR_BLACK); 
+		else {
+			NVIC_DisableIRQ(EXTI4_IRQn);
+		}
+		
+		SSD1306_Fill(SSD1306_COLOR_BLACK);
+		
 		transition_table[state][event]();
 		button_check();
+		
 		SSD1306_UpdateScreen();
 	}
 }
@@ -25,70 +29,16 @@ void mcu_init() {
 	SSD1306_Init();
 	button_init();
 	TCST_init();
-	tmr_init();
 }	
 
-inline void button_timer_start(void) {
-	TIM3->CNT = 0;
-	TIM3->CR1 |= TIM_CR1_CEN;                     	// start timer
-}
-
-inline void button_timer_stop(void) {
-
-	TIM3->CR1 &= ~TIM_CR1_CEN;
-}
-
-inline uint32_t button_timer_get_value(void){
-	return TIM3->CNT;
-}
-
-
 void SysTick_Handler() {
-	ticks_delay++;
+	sys_tick++;
 }
 
 void EXTI4_IRQHandler(void) {
 
 	smd_counter++;
+	smd_counter_new++;
 	
 	EXTI->PR |= EXTI_PR_PR4;
 }
-
-//void EXTI9_5_IRQHandler(void) {
-//	//left button handler 
-//	if ((EXTI->PR & EXTI_PR_PR8) ==  EXTI_PR_PR8) {
-//			pointer--;
-//		
-//		EXTI->PR |= EXTI_PR_PR8;
-//	}
-//}
-//void EXTI15_10_IRQHandler(void) {
-//	
-//	//OK button handler 
-//	if ((EXTI->PR & EXTI_PR_PR10) ==  EXTI_PR_PR10) {
-//		
-//		if ((GPIOB->IDR & GPIO_IDR_IDR10) == GPIO_IDR_IDR10) { // rising edge
-//			button_timer_start();
-//		} 
-//		else { // falling egde
-//			button_timer_stop();
-//			
-//			if (button_timer_get_value() < BUTTON_LONG_PRESS_DELAY) {
-//				// short press action here
-//				event = EVENT_BTN_SHORT;
-//			} 
-//			else {
-//				// long press action here
-//				event = EVENT_BTN_LONG;
-//			}
-//		}
-//		EXTI->PR |= EXTI_PR_PR10;
-//	}
-
-//	//right button handler 
-//	else if ((EXTI->PR & EXTI_PR_PR11) ==  EXTI_PR_PR11) {
-//		pointer++;
-
-//		EXTI->PR |= EXTI_PR_PR11;
-//	}
-//}

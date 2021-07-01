@@ -2,7 +2,6 @@
 #define __BUTTON_H__
 
 #include "stm32f10x.h"
-#include "utils.h"
 #include "menu.h"
 
 void button_init(void);

@@ -12,5 +12,5 @@
 .\objects\main.o: .\code\inc\utils.h
 .\objects\main.o: .\code\inc\button.h
 .\objects\main.o: .\code\inc\fonts.h
-.\objects\main.o: .\code\inc\ssd1306.h
 .\objects\main.o: .\code\inc\ssd1306_i2c.h
+.\objects\main.o: .\code\inc\ssd1306.h

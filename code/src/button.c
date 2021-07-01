@@ -3,92 +3,110 @@
 #define BUTTON_SHORT_PRESS_DELAY 150
 #define BUTTON_LONG_PRESS_DELAY 1000
 
-uint8_t short_state = 0;
-uint8_t long_state = 0;
-uint32_t time_key1 = 0;
+uint32_t ok_time = 0;
+uint32_t left_time = 0;
+uint32_t right_time = 0;
 
-uint8_t flag_key2_press = 1;
-uint32_t time_key2_press = 0;
+typedef struct {   
+	__IO uint8_t ok_state : 1;
+	__IO uint8_t ok_short_state : 1;
+	__IO uint8_t ok_long_state : 1;
+	__IO uint8_t left_press  : 1;
+	__IO uint8_t right_press : 1;
+} bit_fied_TypeDef;
 
-uint8_t flag_key3_press = 1;
-uint32_t time_key3_press = 0;
+bit_fied_TypeDef btn = {0, 0, 0, 1, 1};
 
 void button_init() {
 	//clocking PORT A, PORT B and AFIO for enable AFIO multiplexer 
-	RCC->APB2ENR |= RCC_APB2ENR_IOPAEN | RCC_APB2ENR_IOPBEN | RCC_APB2ENR_AFIOEN;
+	RCC->APB2ENR |= RCC_APB2ENR_IOPAEN 
+				 | RCC_APB2ENR_IOPBEN 
+				 | RCC_APB2ENR_AFIOEN;
 	
 	//http://easyelectronics.ru/arm-uchebnyj-kurs-vneshnie-preryvaniya.html
-	AFIO->EXTICR[2] |= AFIO_EXTICR3_EXTI8_PA | AFIO_EXTICR3_EXTI10_PB | AFIO_EXTICR3_EXTI11_PB;
+	AFIO->EXTICR[2] |= AFIO_EXTICR3_EXTI8_PA 
+					| AFIO_EXTICR3_EXTI10_PB 
+					| AFIO_EXTICR3_EXTI11_PB;
 	
-	//OK button
+	//Init OK button
 	GPIOB->CRH &= ~GPIO_CRH_MODE10;
 	GPIOB->CRH |= GPIO_CRH_CNF10_1;
 	GPIOB->CRH &= ~GPIO_CRH_CNF10_0;
-	//EXTI->IMR  |= EXTI_IMR_MR10;
-	//EXTI->RTSR |= EXTI_RTSR_TR10;
-	//EXTI->FTSR |= EXTI_FTSR_TR10;
-	//RIGHT button
+		
+	//Init RIGHT button
 	GPIOB->CRH &= ~GPIO_CRH_MODE11;
 	GPIOB->CRH |= GPIO_CRH_CNF11_1;
 	GPIOB->CRH &= ~GPIO_CRH_CNF11_0;
-	//EXTI->IMR  |= EXTI_IMR_MR11;
-	//EXTI->RTSR |= EXTI_RTSR_TR11;
-	//LEFT button
+	
+	//Init LEFT button
 	GPIOA->CRH &= ~GPIO_CRH_MODE8;
 	GPIOA->CRH |= GPIO_CRH_CNF8_1;
 	GPIOA->CRH &= ~GPIO_CRH_CNF8_0;
-	//EXTI->IMR  |= EXTI_IMR_MR8;
-	//EXTI->RTSR |= EXTI_RTSR_TR8;
-	
-	//NVIC_EnableIRQ(EXTI9_5_IRQn);
-	//NVIC_EnableIRQ(EXTI15_10_IRQn);
 }
 
 void button_check() {
-	uint32_t ms = ticks_delay;
-	uint8_t key1_state = ((GPIOB->IDR & GPIO_IDR_IDR10) == GPIO_IDR_IDR10);
 	
-	if(key1_state == 1 && !short_state && ((ms - time_key1) > BUTTON_SHORT_PRESS_DELAY)) 
-	{
-		short_state = 1;
-		long_state = 0;
-		time_key1 = ms;
+	btn.ok_state = ((GPIOB->IDR & GPIO_IDR_IDR10) == GPIO_IDR_IDR10);
+	
+	if (btn.ok_state == 1 && !btn.ok_short_state && ((sys_tick - ok_time) > BUTTON_SHORT_PRESS_DELAY)) {
+		btn.ok_short_state = 1;
+		btn.ok_long_state = 0;
+		ok_time = sys_tick;
 	}
-	else if(key1_state == 1 && !long_state && (ms - time_key1) > BUTTON_LONG_PRESS_DELAY) 
-	{
-		long_state = 1;
+	else if (btn.ok_state == 1 && !btn.ok_long_state && (sys_tick - ok_time) > BUTTON_LONG_PRESS_DELAY) {
+		btn.ok_long_state = 1;
 		event = EVENT_BTN_LONG;
 	}
-	else if(key1_state == 0 && short_state && (ms - time_key1) > BUTTON_SHORT_PRESS_DELAY) {
-		short_state = 0;
-		time_key1 = ms;
+	else if (btn.ok_state == 0 && btn.ok_short_state && (sys_tick - ok_time) > BUTTON_SHORT_PRESS_DELAY) {
+		btn.ok_short_state = 0;
+		ok_time = sys_tick;
 
-		if(!long_state) {
+		if(!btn.ok_long_state) {
 			event = EVENT_BTN_SHORT;
 		}
 	}
-
 	
-	if(((GPIOB->IDR & GPIO_IDR_IDR11) == GPIO_IDR_IDR11) == 1 && flag_key2_press) {
-		flag_key2_press = 0;
-		// действие на нажатие
-		event = pointer++;
-		time_key2_press = ticks_delay;
-	}
+	//if we are not in the line menu, do not check the left and right buttons
+	if (state == STATE_SAVE_MENU || state == STATE_SETTING_MENU || state == STATE_DATABASE_MENU) {
 
-	if(!flag_key2_press && (ticks_delay - time_key2_press) > BUTTON_SHORT_PRESS_DELAY) {
-		flag_key2_press = 1;
+		//LEFT button
+		if ((GPIOA->IDR & GPIO_IDR_IDR8) == GPIO_IDR_IDR8 && btn.left_press) {
+			btn.left_press = 0;
+			if (edit_step_flag == 1){
+				step_size--;
+			}
+			else if (edit_db_flag == 1) {
+				database[pointer]--;
+			}
+			else {
+				pointer--;
+			}
+			left_time = sys_tick;
+		}
+		if (!btn.left_press && (sys_tick - left_time) > BUTTON_SHORT_PRESS_DELAY) {
+			btn.left_press = 1;
+		}
+		
+		//RIGHT button
+		if ((GPIOB->IDR & GPIO_IDR_IDR11) == GPIO_IDR_IDR11 && btn.right_press) {
+			btn.right_press = 0;
+			if (edit_step_flag == 1){
+				step_size++;
+			}
+			else if (edit_db_flag == 1) {
+				database[pointer]++;
+			}
+			else {
+				pointer++;
+			}
+			right_time = sys_tick;
+		}
+		if (!btn.right_press && (sys_tick - right_time) > BUTTON_SHORT_PRESS_DELAY) {
+			btn.right_press = 1;
+		}
 	}
 	
-	
-	if(((GPIOA->IDR & GPIO_IDR_IDR8) == GPIO_IDR_IDR8) == 1 && flag_key3_press) {
-		flag_key3_press = 0;
-		// действие на нажатие
-		event = pointer--;
-		time_key3_press = ticks_delay;
-	}
-
-	if(!flag_key3_press && (ticks_delay - time_key3_press) > BUTTON_SHORT_PRESS_DELAY) {
-		flag_key3_press = 1;
+	else {
+		pointer = 0;
 	}
 }
