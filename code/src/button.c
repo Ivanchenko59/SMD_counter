@@ -48,19 +48,18 @@ void button_check() {
 	
 	btn.ok_state = ((GPIOB->IDR & GPIO_IDR_IDR10) == GPIO_IDR_IDR10);
 	
-	if (btn.ok_state == 1 && !btn.ok_short_state && ((sys_tick - ok_time) > BUTTON_SHORT_PRESS_DELAY)) {
+	if (btn.ok_state && !btn.ok_short_state && ((sys_tick - ok_time) > BUTTON_SHORT_PRESS_DELAY)) {
 		btn.ok_short_state = 1;
 		btn.ok_long_state = 0;
 		ok_time = sys_tick;
 	}
-	else if (btn.ok_state == 1 && !btn.ok_long_state && (sys_tick - ok_time) > BUTTON_LONG_PRESS_DELAY) {
+	else if (btn.ok_state && !btn.ok_long_state && (sys_tick - ok_time) > BUTTON_LONG_PRESS_DELAY) {
 		btn.ok_long_state = 1;
 		event = EVENT_BTN_LONG;
 	}
-	else if (btn.ok_state == 0 && btn.ok_short_state && (sys_tick - ok_time) > BUTTON_SHORT_PRESS_DELAY) {
+	else if (!btn.ok_state && btn.ok_short_state && (sys_tick - ok_time) > BUTTON_SHORT_PRESS_DELAY) {
 		btn.ok_short_state = 0;
 		ok_time = sys_tick;
-
 		if(!btn.ok_long_state) {
 			event = EVENT_BTN_SHORT;
 		}
@@ -72,10 +71,13 @@ void button_check() {
 		//LEFT button
 		if ((GPIOA->IDR & GPIO_IDR_IDR8) == GPIO_IDR_IDR8 && btn.left_press) {
 			btn.left_press = 0;
-			if (edit_step_flag == 1){
+			if (edit_step_flag){
 				step_size--;
 			}
-			else if (edit_db_flag == 1) {
+			else if (edit_counter_flag) {
+				smd_counter--;
+			}
+			else if (edit_db_flag) {
 				database[pointer]--;
 			}
 			else {
@@ -90,10 +92,13 @@ void button_check() {
 		//RIGHT button
 		if ((GPIOB->IDR & GPIO_IDR_IDR11) == GPIO_IDR_IDR11 && btn.right_press) {
 			btn.right_press = 0;
-			if (edit_step_flag == 1){
+			if (edit_step_flag){
 				step_size++;
 			}
-			else if (edit_db_flag == 1) {
+			else if (edit_counter_flag) {
+				smd_counter++;
+			}
+			else if (edit_db_flag) {
 				database[pointer]++;
 			}
 			else {

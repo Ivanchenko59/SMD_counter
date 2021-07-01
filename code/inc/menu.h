@@ -39,12 +39,12 @@ typedef enum {
 	SETTING_MENU_MAX,		// 4
 } SETTING_MENU_t;
 
-extern uint8_t state, event, edit_step_flag, step_size, edit_db_flag;
+extern int8_t pointer;
+extern uint8_t state, event, step_size, edit_step_flag, edit_db_flag, edit_counter_flag;
 extern uint32_t database[];
-extern volatile int8_t pointer;
 extern TRANSITION_FUNC_PTR_t transition_table[STATE_MAX][EVENT_MAX];
 
-uint8_t constrain(int8_t x, uint8_t min, uint8_t max);
+uint8_t constrain(int8_t x, uint8_t min, uint8_t max); 		//return a value between min and max
 void welcome_menu(void);
 void main_menu(void);
 void count_menu(void);
@@ -52,5 +52,6 @@ void setting_menu(void);
 void edit_menu(void);
 void save_menu(void);
 void database_menu(void);
+void save_to_data_base(void);
 
 #endif /* __MENU_H__ */

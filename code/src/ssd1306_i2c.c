@@ -33,39 +33,27 @@ static uint32_t ssd1306_I2C_Timeout;
 #define I2C_ACK_DISABLE        0
 
 void ssd1306_I2C_Init() {
-//	GPIO_InitTypeDef gpio;
-//	I2C_InitTypeDef i2c;
 
-//    RCC_APB1PeriphClockCmd(RCC_APB1Periph_I2C1, ENABLE);
-		RCC->APB1ENR |= RCC_APB1ENR_I2C1EN;
-//    RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB, ENABLE);
-		RCC->APB2ENR |= RCC_APB2ENR_IOPBEN;
+	/*********************I2C1 INIT IN FAST MODE*********************/
 	
-		I2C1->CR2 = ((~I2C_CR2_FREQ & I2C1->CR2) | 36);		//Частота шины APB1 - 36МГц.
-		I2C1->CCR = ((I2C1->CCR & ~I2C_CCR_CCR) | 55);		//Настройка частоты.
-		I2C1->TRISE = 0x04;	
+	RCC->APB1ENR |= RCC_APB1ENR_I2C1EN;					//Clocking I2C1
+	RCC->APB2ENR |= RCC_APB2ENR_IOPBEN;					//Clocking PORTB
 	
-//    i2c.I2C_ClockSpeed = 400000;
-//    i2c.I2C_Mode = I2C_Mode_I2C;
-//    i2c.I2C_DutyCycle = I2C_DutyCycle_2;
-//    i2c.I2C_OwnAddress1 = 0x15;
-//    i2c.I2C_Ack = I2C_Ack_Disable;
-//    i2c.I2C_AcknowledgedAddress = I2C_AcknowledgedAddress_7bit;
-//    I2C_Init(I2C1, &i2c);
+	I2C1->CR2 &= ~I2C_CR2_FREQ;
+	I2C1->CR2 |= 36; 									//APB1 = 36 MHz
+	I2C1->CCR &= ~I2C_CCR_DUTY;							//delay 0 ?
+	I2C1->CCR |= I2C_CCR_FS;							//FS =1 for 400kHz	
+	I2C1->CCR &= ~I2C_CCR_CCR;							//RESET CCR
+	I2C1->CCR |= 30;									//CCR = 2500nS / 3 * TPCLK1 = 2500/3*28 = 30			
+	I2C1->TRISE |= 12;									//(TRISE=RISE/tPLCK)+1=(300 nS/28 nS)+1=12
 
-//    gpio.GPIO_Pin = GPIO_Pin_6 | GPIO_Pin_7;
-//    gpio.GPIO_Mode = GPIO_Mode_AF_OD;
-//    gpio.GPIO_Speed = GPIO_Speed_50MHz;
-//    GPIO_Init(GPIOB, &gpio);
-		GPIOB->CRL |= GPIO_CRL_CNF6;		//Alternate function output Open-drain
-		GPIOB->CRL |= GPIO_CRL_CNF7;		//Alternate function output Open-drain
-		
-		GPIOB->CRL |= GPIO_CRL_MODE6;		//Speed_50MHz
-		GPIOB->CRL |= GPIO_CRL_MODE7;		//Speed_50MHz	
+	GPIOB->CRL |= GPIO_CRL_CNF6;						//Alternate function output Open-drain
+	GPIOB->CRL |= GPIO_CRL_CNF7;						//Alternate function output Open-drain
+	
+	GPIOB->CRL |= GPIO_CRL_MODE6;						//Speed_50MHz
+	GPIOB->CRL |= GPIO_CRL_MODE7;						//Speed_50MHz	
 
- 
-//    I2C_Cmd(I2C1, ENABLE);
-		I2C1->CR1 |= I2C_CR1_PE;
+	I2C1->CR1 |= I2C_CR1_PE;		
 }
 
 

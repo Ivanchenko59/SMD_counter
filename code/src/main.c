@@ -36,7 +36,7 @@ void SysTick_Handler() {
 }
 
 void EXTI4_IRQHandler(void) {
-
+	
 	smd_counter++;
 	smd_counter_new++;
 	
