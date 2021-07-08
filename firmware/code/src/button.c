@@ -2,6 +2,7 @@
 
 #define BUTTON_SHORT_PRESS_DELAY 150
 #define BUTTON_LONG_PRESS_DELAY 1000
+#define STEP_SIZE_MAX 8
 
 uint32_t ok_time = 0;
 uint32_t left_time = 0;
@@ -72,13 +73,17 @@ void button_check() {
 		if ((GPIOA->IDR & GPIO_IDR_IDR8) == GPIO_IDR_IDR8 && btn.left_press) {
 			btn.left_press = 0;
 			if (edit_step_flag){
-				step_size--;
+				step_size = constrain(step_size - 1, 1, STEP_SIZE_MAX);
 			}
 			else if (edit_counter_flag) {
-				smd_counter--;
+				if (smd_counter > 0) {
+					smd_counter--;
+				}
 			}
 			else if (edit_db_flag) {
-				database[pointer]--;
+				if (database[pointer] > 0) {
+					database[pointer]--;
+				}
 			}
 			else {
 				pointer--;
@@ -93,7 +98,7 @@ void button_check() {
 		if ((GPIOB->IDR & GPIO_IDR_IDR11) == GPIO_IDR_IDR11 && btn.right_press) {
 			btn.right_press = 0;
 			if (edit_step_flag){
-				step_size++;
+				step_size = constrain(step_size + 1, 1, STEP_SIZE_MAX);
 			}
 			else if (edit_counter_flag) {
 				smd_counter++;

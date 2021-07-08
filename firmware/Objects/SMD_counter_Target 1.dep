@@ -66,7 +66,7 @@ I (.\code\inc\button.h)(0x60DDBF6C)
 I (.\code\inc\fonts.h)(0x60788CE4)
 I (.\code\inc\ssd1306_i2c.h)(0x60783F89)
 I (.\code\inc\ssd1306.h)(0x60DB1FD2)
-F (.\code\src\menu.c)(0x60DDEE0C)(--c99 -c --cpu Cortex-M3 -D__EVAL -g -O0 --apcs=interwork --split_sections -I ..\SMD_counter -I .\CMSIS\inc -I .\code\inc-ID:\Programs\Keil_v5\ARM\RV31\INC-ID:\Programs\Keil_v5\ARM\CMSIS\Include-ID:\Programs\Keil_v5\ARM\INC\ST\STM32F10x-D__UVISION_VERSION="533"-o .\objects\menu.o --omf_browse .\objects\menu.crf --depend .\objects\menu.d)
+F (.\code\src\menu.c)(0x60DDFB7F)(--c99 -c --cpu Cortex-M3 -D__EVAL -g -O0 --apcs=interwork --split_sections -I ..\SMD_counter -I .\CMSIS\inc -I .\code\inc-ID:\Programs\Keil_v5\ARM\RV31\INC-ID:\Programs\Keil_v5\ARM\CMSIS\Include-ID:\Programs\Keil_v5\ARM\INC\ST\STM32F10x-D__UVISION_VERSION="533"-o .\objects\menu.o --omf_browse .\objects\menu.crf --depend .\objects\menu.d)
 I (.\code\inc\menu.h)(0x60DDEC7D)
 I (.\CMSIS\inc\stm32f10x.h)(0x6052975F)
 I (.\CMSIS\inc\core_cm3.h)(0x4D528FB8)
@@ -82,7 +82,7 @@ I (.\code\inc\fonts.h)(0x60788CE4)
 I (.\code\inc\ssd1306_i2c.h)(0x60783F89)
 I (.\code\inc\ssd1306.h)(0x60DB1FD2)
 F (.\code\src\state_machine.c)(0x60D9F973)(--c99 -c --cpu Cortex-M3 -D__EVAL -g -O0 --apcs=interwork --split_sections -I ..\SMD_counter -I .\CMSIS\inc -I .\code\inc-ID:\Programs\Keil_v5\ARM\RV31\INC-ID:\Programs\Keil_v5\ARM\CMSIS\Include-ID:\Programs\Keil_v5\ARM\INC\ST\STM32F10x-D__UVISION_VERSION="533"-o .\objects\state_machine.o --omf_browse .\objects\state_machine.crf --depend .\objects\state_machine.d)
-F (.\code\src\button.c)(0x60DDEB04)(--c99 -c --cpu Cortex-M3 -D__EVAL -g -O0 --apcs=interwork --split_sections -I ..\SMD_counter -I .\CMSIS\inc -I .\code\inc-ID:\Programs\Keil_v5\ARM\RV31\INC-ID:\Programs\Keil_v5\ARM\CMSIS\Include-ID:\Programs\Keil_v5\ARM\INC\ST\STM32F10x-D__UVISION_VERSION="533"-o .\objects\button.o --omf_browse .\objects\button.crf --depend .\objects\button.d)
+F (.\code\src\button.c)(0x60DE1DF7)(--c99 -c --cpu Cortex-M3 -D__EVAL -g -O0 --apcs=interwork --split_sections -I ..\SMD_counter -I .\CMSIS\inc -I .\code\inc-ID:\Programs\Keil_v5\ARM\RV31\INC-ID:\Programs\Keil_v5\ARM\CMSIS\Include-ID:\Programs\Keil_v5\ARM\INC\ST\STM32F10x-D__UVISION_VERSION="533"-o .\objects\button.o --omf_browse .\objects\button.crf --depend .\objects\button.d)
 I (.\code\inc\button.h)(0x60DDBF6C)
 I (.\CMSIS\inc\stm32f10x.h)(0x6052975F)
 I (.\CMSIS\inc\core_cm3.h)(0x4D528FB8)

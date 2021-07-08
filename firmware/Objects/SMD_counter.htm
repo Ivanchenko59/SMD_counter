@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\Objects\SMD_counter.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\SMD_counter.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060960: Last Updated: Thu Jul 01 20:23:38 2021
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060960: Last Updated: Thu Jul 01 22:56:40 2021
 <BR><P>
 <H3>Maximum Stack Usage =        136 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -449,7 +449,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[3e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setting_menu
 <LI><a href="#[3f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;save_menu
 <LI><a href="#[3c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main_menu
-<LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;edit_menu
+<LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;edit_menu
 <LI><a href="#[40]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;database_menu
 <LI><a href="#[3d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;count_menu
 </UL>
@@ -569,7 +569,7 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[61]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSD1306_DrawPixel
 <LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSD1306_DrawLine
 </UL>
-<BR>[Called By]<UL><LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;welcome_menu
+<BR>[Called By]<UL><LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;welcome_menu
 </UL>
 
 <P><STRONG><a name="[63]"></a>SSD1306_DrawFilledRectangle</STRONG> (Thumb, 94 bytes, Stack size 32 bytes, ssd1306.o(i.SSD1306_DrawFilledRectangle))
@@ -580,7 +580,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[3e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setting_menu
 <LI><a href="#[3f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;save_menu
 <LI><a href="#[40]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;database_menu
-<LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;welcome_menu
+<LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;welcome_menu
 </UL>
 
 <P><STRONG><a name="[62]"></a>SSD1306_DrawLine</STRONG> (Thumb, 330 bytes, Stack size 52 bytes, ssd1306.o(i.SSD1306_DrawLine))
@@ -617,21 +617,21 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memset
 </UL>
-<BR>[Called By]<UL><LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;save_to_data_base
-<LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;welcome_menu
+<BR>[Called By]<UL><LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;save_to_data_base
+<LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;welcome_menu
 <LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSD1306_Init
 <LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[70]"></a>SSD1306_GotoXY</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, ssd1306.o(i.SSD1306_GotoXY))
+<P><STRONG><a name="[72]"></a>SSD1306_GotoXY</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, ssd1306.o(i.SSD1306_GotoXY))
 <BR><BR>[Called By]<UL><LI><a href="#[3e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setting_menu
-<LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;save_to_data_base
+<LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;save_to_data_base
 <LI><a href="#[3f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;save_menu
 <LI><a href="#[3c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main_menu
-<LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;edit_menu
+<LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;edit_menu
 <LI><a href="#[40]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;database_menu
 <LI><a href="#[3d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;count_menu
-<LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;welcome_menu
+<LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;welcome_menu
 </UL>
 
 <P><STRONG><a name="[66]"></a>SSD1306_Init</STRONG> (Thumb, 372 bytes, Stack size 8 bytes, ssd1306.o(i.SSD1306_Init))
@@ -644,7 +644,7 @@ Global Symbols
 <LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSD1306_UpdateScreen
 <LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSD1306_Fill
 </UL>
-<BR>[Called By]<UL><LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mcu_init
+<BR>[Called By]<UL><LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mcu_init
 </UL>
 
 <P><STRONG><a name="[6b]"></a>SSD1306_Putc</STRONG> (Thumb, 164 bytes, Stack size 28 bytes, ssd1306.o(i.SSD1306_Putc))
@@ -661,13 +661,13 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSD1306_Putc
 </UL>
 <BR>[Called By]<UL><LI><a href="#[3e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setting_menu
-<LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;save_to_data_base
+<LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;save_to_data_base
 <LI><a href="#[3f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;save_menu
 <LI><a href="#[3c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main_menu
-<LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;edit_menu
+<LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;edit_menu
 <LI><a href="#[40]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;database_menu
 <LI><a href="#[3d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;count_menu
-<LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;welcome_menu
+<LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;welcome_menu
 </UL>
 
 <P><STRONG><a name="[6a]"></a>SSD1306_UpdateScreen</STRONG> (Thumb, 78 bytes, Stack size 16 bytes, ssd1306.o(i.SSD1306_UpdateScreen))
@@ -676,8 +676,8 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ssd1306_I2C_WriteMulti
 <LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ssd1306_I2C_Write
 </UL>
-<BR>[Called By]<UL><LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;save_to_data_base
-<LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;welcome_menu
+<BR>[Called By]<UL><LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;save_to_data_base
+<LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;welcome_menu
 <LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSD1306_Init
 <LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
@@ -693,21 +693,26 @@ Global Symbols
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f10x_md.o(.text)
 </UL>
 <P><STRONG><a name="[78]"></a>TCST_init</STRONG> (Thumb, 114 bytes, Stack size 0 bytes, utils.o(i.TCST_init))
-<BR><BR>[Called By]<UL><LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mcu_init
+<BR><BR>[Called By]<UL><LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mcu_init
 </UL>
 
-<P><STRONG><a name="[76]"></a>button_check</STRONG> (Thumb, 576 bytes, Stack size 0 bytes, button.o(i.button_check))
-<BR><BR>[Called By]<UL><LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+<P><STRONG><a name="[70]"></a>button_check</STRONG> (Thumb, 624 bytes, Stack size 8 bytes, button.o(i.button_check))
+<BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = button_check
+</UL>
+<BR>[Calls]<UL><LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constrain
+</UL>
+<BR>[Called By]<UL><LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
 <P><STRONG><a name="[77]"></a>button_init</STRONG> (Thumb, 120 bytes, Stack size 0 bytes, button.o(i.button_init))
-<BR><BR>[Called By]<UL><LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mcu_init
+<BR><BR>[Called By]<UL><LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mcu_init
 </UL>
 
 <P><STRONG><a name="[71]"></a>constrain</STRONG> (Thumb, 22 bytes, Stack size 0 bytes, menu.o(i.constrain))
 <BR><BR>[Called By]<UL><LI><a href="#[3e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setting_menu
 <LI><a href="#[3f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;save_menu
 <LI><a href="#[40]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;database_menu
+<LI><a href="#[70]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;button_check
 </UL>
 
 <P><STRONG><a name="[3d]"></a>count_menu</STRONG> (Thumb, 124 bytes, Stack size 8 bytes, menu.o(i.count_menu))
@@ -716,7 +721,7 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2sprintf
 <LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSD1306_Puts
-<LI><a href="#[70]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSD1306_GotoXY
+<LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSD1306_GotoXY
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> menu.o(.data)
 </UL>
@@ -727,25 +732,25 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2sprintf
 <LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constrain
 <LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSD1306_Puts
-<LI><a href="#[70]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSD1306_GotoXY
+<LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSD1306_GotoXY
 <LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSD1306_DrawRectangle
 <LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSD1306_DrawFilledRectangle
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> menu.o(.data)
 </UL>
 <P><STRONG><a name="[68]"></a>delay</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, utils.o(i.delay))
-<BR><BR>[Called By]<UL><LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;save_to_data_base
+<BR><BR>[Called By]<UL><LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;save_to_data_base
 <LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSD1306_Init
 </UL>
 
-<P><STRONG><a name="[72]"></a>edit_menu</STRONG> (Thumb, 74 bytes, Stack size 8 bytes, menu.o(i.edit_menu))
+<P><STRONG><a name="[73]"></a>edit_menu</STRONG> (Thumb, 74 bytes, Stack size 8 bytes, menu.o(i.edit_menu))
 <BR><BR>[Stack]<UL><LI>Max Depth = 128 + Unknown Stack Size
 <LI>Call Chain = edit_menu &rArr; __2sprintf &rArr; _printf_char_common &rArr; __printf
 </UL>
 <BR>[Calls]<UL><LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2sprintf
-<LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;save_to_data_base
+<LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;save_to_data_base
 <LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSD1306_Puts
-<LI><a href="#[70]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSD1306_GotoXY
+<LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSD1306_GotoXY
 </UL>
 <BR>[Called By]<UL><LI><a href="#[3f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;save_menu
 </UL>
@@ -754,11 +759,11 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 132 + Unknown Stack Size
 <LI>Call Chain = main &rArr; welcome_menu &rArr; SSD1306_DrawFilledCircle &rArr; SSD1306_DrawLine &rArr; SSD1306_DrawPixel
 </UL>
-<BR>[Calls]<UL><LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;welcome_menu
-<LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;button_check
+<BR>[Calls]<UL><LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;welcome_menu
+<LI><a href="#[70]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;button_check
 <LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSD1306_UpdateScreen
 <LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSD1306_Fill
-<LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mcu_init
+<LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mcu_init
 </UL>
 <BR>[Called By]<UL><LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_entry_main
 </UL>
@@ -769,11 +774,11 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2sprintf
 <LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSD1306_Puts
-<LI><a href="#[70]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSD1306_GotoXY
+<LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSD1306_GotoXY
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> menu.o(.data)
 </UL>
-<P><STRONG><a name="[74]"></a>mcu_init</STRONG> (Thumb, 96 bytes, Stack size 16 bytes, main.o(i.mcu_init))
+<P><STRONG><a name="[75]"></a>mcu_init</STRONG> (Thumb, 96 bytes, Stack size 16 bytes, main.o(i.mcu_init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 80 + Unknown Stack Size
 <LI>Call Chain = mcu_init &rArr; SSD1306_Init &rArr; SSD1306_UpdateScreen &rArr; ssd1306_I2C_WriteMulti &rArr; ssd1306_I2C_Start
 </UL>
@@ -789,28 +794,28 @@ Global Symbols
 <LI>Call Chain = save_menu &rArr; edit_menu &rArr; __2sprintf &rArr; _printf_char_common &rArr; __printf
 </UL>
 <BR>[Calls]<UL><LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2sprintf
-<LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;save_to_data_base
-<LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;edit_menu
+<LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;save_to_data_base
+<LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;edit_menu
 <LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constrain
 <LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSD1306_Puts
-<LI><a href="#[70]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSD1306_GotoXY
+<LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSD1306_GotoXY
 <LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSD1306_DrawRectangle
 <LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSD1306_DrawFilledRectangle
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> menu.o(.data)
 </UL>
-<P><STRONG><a name="[73]"></a>save_to_data_base</STRONG> (Thumb, 78 bytes, Stack size 8 bytes, menu.o(i.save_to_data_base))
+<P><STRONG><a name="[74]"></a>save_to_data_base</STRONG> (Thumb, 78 bytes, Stack size 8 bytes, menu.o(i.save_to_data_base))
 <BR><BR>[Stack]<UL><LI>Max Depth = 72 + Unknown Stack Size
 <LI>Call Chain = save_to_data_base &rArr; SSD1306_Puts &rArr; SSD1306_Putc &rArr; SSD1306_DrawPixel
 </UL>
 <BR>[Calls]<UL><LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSD1306_Puts
-<LI><a href="#[70]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSD1306_GotoXY
+<LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSD1306_GotoXY
 <LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay
 <LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSD1306_UpdateScreen
 <LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSD1306_Fill
 </UL>
 <BR>[Called By]<UL><LI><a href="#[3f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;save_menu
-<LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;edit_menu
+<LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;edit_menu
 </UL>
 
 <P><STRONG><a name="[3e]"></a>setting_menu</STRONG> (Thumb, 322 bytes, Stack size 8 bytes, menu.o(i.setting_menu))
@@ -820,7 +825,7 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2sprintf
 <LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constrain
 <LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSD1306_Puts
-<LI><a href="#[70]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSD1306_GotoXY
+<LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSD1306_GotoXY
 <LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSD1306_DrawRectangle
 <LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSD1306_DrawFilledRectangle
 </UL>
@@ -868,12 +873,12 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSD1306_UpdateScreen
 </UL>
 
-<P><STRONG><a name="[75]"></a>welcome_menu</STRONG> (Thumb, 126 bytes, Stack size 16 bytes, menu.o(i.welcome_menu))
+<P><STRONG><a name="[76]"></a>welcome_menu</STRONG> (Thumb, 126 bytes, Stack size 16 bytes, menu.o(i.welcome_menu))
 <BR><BR>[Stack]<UL><LI>Max Depth = 132 + Unknown Stack Size
 <LI>Call Chain = welcome_menu &rArr; SSD1306_DrawFilledCircle &rArr; SSD1306_DrawLine &rArr; SSD1306_DrawPixel
 </UL>
 <BR>[Calls]<UL><LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSD1306_Puts
-<LI><a href="#[70]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSD1306_GotoXY
+<LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSD1306_GotoXY
 <LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSD1306_DrawFilledRectangle
 <LI><a href="#[60]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSD1306_DrawFilledCircle
 <LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSD1306_UpdateScreen
