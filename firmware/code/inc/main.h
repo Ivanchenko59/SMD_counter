@@ -14,7 +14,7 @@
 #include "ssd1306_i2c.h"
 #include "ssd1306.h"
 
-extern volatile uint32_t smd_counter, smd_counter_new; 
+extern volatile uint32_t front_counter, front_counter_continue, smd_counter, smd_counter_continue; 
 
 void mcu_init(void);
 #endif /* __MAIN_H__ */

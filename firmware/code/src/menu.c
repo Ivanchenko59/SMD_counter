@@ -13,7 +13,6 @@ uint8_t step_size = 1, db_element = 0;
 uint8_t edit_step_flag = 0, continue_counting_flag = 0, edit_db_flag = 0, edit_counter_flag = 0;
 uint32_t database[DATABASE_SIZE] = {0};
 
-
 typedef void (*TRANSITION_FUNC_PTR_t)(void);
 
 TRANSITION_FUNC_PTR_t transition_table[STATE_MAX][EVENT_MAX] = {
@@ -81,12 +80,14 @@ void count_menu(void) {
 	SSD1306_Puts("Step:x", &Font_7x10, SSD1306_COLOR_WHITE);
 	sprintf(str,"%u", step_size);
 	SSD1306_Puts(str, &Font_7x10, SSD1306_COLOR_WHITE);
-	SSD1306_GotoXY(54, 16);
+	
+	SSD1306_GotoXY(54 - fixtext(1), 16);
 	sprintf(str, "%u", smd_counter);
 	SSD1306_Puts(str, &Font_16x26, SSD1306_COLOR_WHITE);
 	if (continue_counting_flag == 1) {
-		sprintf(str, "%u", smd_counter_new);
-		SSD1306_GotoXY(100, 45);
+		smd_counter_continue = front_counter_continue / step_size;
+		sprintf(str, "%u", smd_counter_continue);
+		SSD1306_GotoXY(114 - fixtext(2), 45);
 		SSD1306_Puts(str, &Font_11x18, SSD1306_COLOR_WHITE);
 	}
 	
@@ -126,12 +127,13 @@ void save_menu(void) {
 					break;
 				case CONTINUE:
 					continue_counting_flag = 1;
-					smd_counter_new = 0;
+					front_counter_continue = 0;
 					state = STATE_COUNT_MENU;
 					break;
 				case CANCEL:
+					front_counter = 0;
 					smd_counter = 0;
-					smd_counter_new = 0;
+					front_counter_continue = 0;
 					continue_counting_flag = 0;
 					state = STATE_MAIN_MENU;
 					break;
@@ -142,9 +144,11 @@ void save_menu(void) {
 }
 
 void edit_menu(void) {
-	SSD1306_GotoXY(30, 10);
-	sprintf(str, "< %u >", smd_counter);
+	SSD1306_GotoXY(35 - fixtext(1), 10);
+	SSD1306_Puts("< ", &Font_11x18, SSD1306_COLOR_WHITE);
+	sprintf(str, "%u", smd_counter);
 	SSD1306_Puts(str, &Font_16x26, SSD1306_COLOR_WHITE);
+	SSD1306_Puts(" >", &Font_11x18, SSD1306_COLOR_WHITE);
 	SSD1306_GotoXY(10, 52);
 	SSD1306_Puts("HOLD OK to save", &Font_7x10, SSD1306_COLOR_WHITE);
 	if (event == EVENT_BTN_LONG) {
@@ -227,8 +231,9 @@ void database_menu(void) {
 void save_to_data_base(void) {
 	database[db_element] = smd_counter;
 	db_element++;
+	front_counter = 0;
 	smd_counter = 0;
-	smd_counter_new = 0;
+	front_counter_continue = 0;
 	continue_counting_flag = 0;
 	SSD1306_GotoXY(15, 20);
 	SSD1306_Fill(SSD1306_COLOR_BLACK);
@@ -247,4 +252,28 @@ uint8_t constrain(int8_t x, uint8_t min, uint8_t max) {
 	else {
 		return x;
 	}
+}
+
+uint8_t fixtext(uint8_t x) {
+	uint8_t fixval;
+	uint8_t large = 8;
+	uint8_t small = 11;
+	switch(x) {
+		case 1:
+			if(smd_counter <= 9) 			fixval = large * 0;
+			if(smd_counter > 9) 			fixval = large * 1;
+			if(smd_counter > 99) 			fixval = large * 2;
+			if(smd_counter > 999) 			fixval = large * 3;
+			if(smd_counter > 9999) 			fixval = large * 4;
+		break;
+		case 2:
+			if(smd_counter_continue <= 9) 	fixval = small * 0;
+			if(smd_counter_continue > 9) 	fixval = small * 1;
+			if(smd_counter_continue > 99)	fixval = small * 2;
+			if(smd_counter_continue > 999)	fixval = small * 3;
+			if(smd_counter_continue > 9999) fixval = small * 4;
+		break;
+	}
+	
+	return fixval;
 }

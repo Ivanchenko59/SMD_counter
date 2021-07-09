@@ -15,12 +15,10 @@ void TCST_init() {
 	GPIOB->CRL &= ~GPIO_CRL_MODE4;
 	GPIOB->CRL |= GPIO_CRL_CNF4_1;
 	GPIOB->CRL &= ~GPIO_CRL_CNF4_0;
-	//input with pull up == 1
-	GPIOB->ODR |= GPIO_ODR_ODR4; 
+	GPIOB->ODR |= GPIO_ODR_ODR4; 				//pullup
 	
-	//switch EXTI multiplexer to PB4
- 	AFIO->EXTICR[1] |= AFIO_EXTICR2_EXTI4_PB;
-	EXTI->IMR |= EXTI_IMR_MR4;
+ 	AFIO->EXTICR[1] |= AFIO_EXTICR2_EXTI4_PB;	//switch EXTI multiplexer to PB4
+	NVIC_EnableIRQ(EXTI4_IRQn);
 	EXTI->RTSR |= EXTI_RTSR_TR4;
-	EXTI->FTSR |= EXTI_FTSR_TR4;
+	EXTI->IMR |= EXTI_IMR_MR4;
 }

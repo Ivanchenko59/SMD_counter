@@ -1,6 +1,6 @@
 #include "main.h"
 
-volatile uint32_t smd_counter = 0, smd_counter_new = 0;
+volatile uint32_t front_counter = 0, front_counter_continue = 0, smd_counter, smd_counter_continue;
 
 int main() {
 	
@@ -9,10 +9,10 @@ int main() {
 	
 	while(1) {
 		if (state == STATE_COUNT_MENU) {
-			NVIC_EnableIRQ(EXTI4_IRQn);
+			EXTI->IMR |= EXTI_IMR_MR4;
 		}
 		else {
-			NVIC_DisableIRQ(EXTI4_IRQn);
+			EXTI->IMR &= ~EXTI_IMR_MR4;
 		}
 		
 		SSD1306_Fill(SSD1306_COLOR_BLACK);
@@ -36,9 +36,9 @@ void SysTick_Handler() {
 }
 
 void EXTI4_IRQHandler(void) {
-	
-	smd_counter++;
-	smd_counter_new++;
-	
+	//clear the bit at the beginning, because at the end the bit "does not have time to be cleared"
 	EXTI->PR |= EXTI_PR_PR4;
+	front_counter++;
+	front_counter_continue++;
+	smd_counter = front_counter / step_size;
 }

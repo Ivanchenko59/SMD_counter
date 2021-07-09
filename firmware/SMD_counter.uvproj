@@ -378,7 +378,7 @@
               <MiscControls></MiscControls>
               <Define></Define>
               <Undefine></Undefine>
-              <IncludePath>..\SMD_counter;.\CMSIS\inc;.\code\inc</IncludePath>
+              <IncludePath>..\firmware;.\CMSIS\inc;.\code\inc</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>

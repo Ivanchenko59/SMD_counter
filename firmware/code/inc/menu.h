@@ -45,6 +45,7 @@ extern uint32_t database[];
 extern TRANSITION_FUNC_PTR_t transition_table[STATE_MAX][EVENT_MAX];
 
 uint8_t constrain(int8_t x, uint8_t min, uint8_t max); 		//return a value between min and max
+uint8_t fixtext(uint8_t x);
 void welcome_menu(void);
 void main_menu(void);
 void count_menu(void);
