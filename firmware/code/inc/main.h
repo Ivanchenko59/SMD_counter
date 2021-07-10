@@ -15,6 +15,6 @@
 #include "ssd1306.h"
 
 extern volatile uint32_t front_counter, front_counter_continue, smd_counter, smd_counter_continue; 
-
+extern uint8_t skip_first_front;
 void mcu_init(void);
 #endif /* __MAIN_H__ */

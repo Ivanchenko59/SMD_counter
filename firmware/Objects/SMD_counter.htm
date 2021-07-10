@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\Objects\SMD_counter.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\SMD_counter.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060960: Last Updated: Sat Jul 10 01:07:56 2021
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060960: Last Updated: Sat Jul 10 17:37:17 2021
 <BR><P>
 <H3>Maximum Stack Usage =        136 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -560,7 +560,7 @@ Global Symbols
 
 <P><STRONG><a name="[ad]"></a>__semihosting_library_function</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, indicate_semi.o(.text), UNUSED)
 
-<P><STRONG><a name="[17]"></a>EXTI4_IRQHandler</STRONG> (Thumb, 50 bytes, Stack size 0 bytes, main.o(i.EXTI4_IRQHandler))
+<P><STRONG><a name="[17]"></a>EXTI4_IRQHandler</STRONG> (Thumb, 64 bytes, Stack size 0 bytes, main.o(i.EXTI4_IRQHandler))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f10x_md.o(RESET)
 </UL>
 <P><STRONG><a name="[60]"></a>SSD1306_DrawFilledCircle</STRONG> (Thumb, 334 bytes, Stack size 44 bytes, ssd1306.o(i.SSD1306_DrawFilledCircle))
@@ -798,7 +798,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[3f]"></a>save_menu</STRONG> (Thumb, 346 bytes, Stack size 8 bytes, menu.o(i.save_menu))
+<P><STRONG><a name="[3f]"></a>save_menu</STRONG> (Thumb, 356 bytes, Stack size 8 bytes, menu.o(i.save_menu))
 <BR><BR>[Stack]<UL><LI>Max Depth = 136 + Unknown Stack Size
 <LI>Call Chain = save_menu &rArr; edit_menu &rArr; __2sprintf &rArr; _printf_char_common &rArr; __printf
 </UL>
@@ -813,7 +813,7 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> menu.o(.data)
 </UL>
-<P><STRONG><a name="[75]"></a>save_to_data_base</STRONG> (Thumb, 82 bytes, Stack size 8 bytes, menu.o(i.save_to_data_base))
+<P><STRONG><a name="[75]"></a>save_to_data_base</STRONG> (Thumb, 86 bytes, Stack size 8 bytes, menu.o(i.save_to_data_base))
 <BR><BR>[Stack]<UL><LI>Max Depth = 72 + Unknown Stack Size
 <LI>Call Chain = save_to_data_base &rArr; SSD1306_Puts &rArr; SSD1306_Putc &rArr; SSD1306_DrawPixel
 </UL>

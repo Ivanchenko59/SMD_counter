@@ -126,11 +126,13 @@ void save_menu(void) {
 					edit_counter_flag = 1;
 					break;
 				case CONTINUE:
+					skip_first_front = 0;
 					continue_counting_flag = 1;
 					front_counter_continue = 0;
 					state = STATE_COUNT_MENU;
 					break;
 				case CANCEL:
+					skip_first_front = 0;
 					front_counter = 0;
 					smd_counter = 0;
 					front_counter_continue = 0;
@@ -231,6 +233,7 @@ void database_menu(void) {
 void save_to_data_base(void) {
 	database[db_element] = smd_counter;
 	db_element++;
+	skip_first_front = 0;
 	front_counter = 0;
 	smd_counter = 0;
 	front_counter_continue = 0;

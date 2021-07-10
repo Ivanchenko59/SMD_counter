@@ -1,6 +1,7 @@
 #include "main.h"
 
 volatile uint32_t front_counter = 0, front_counter_continue = 0, smd_counter, smd_counter_continue;
+uint8_t skip_first_front = 0;
 
 int main() {
 	
@@ -38,7 +39,10 @@ void SysTick_Handler() {
 void EXTI4_IRQHandler(void) {
 	//clear the bit at the beginning, because at the end the bit "does not have time to be cleared"
 	EXTI->PR |= EXTI_PR_PR4;
-	front_counter++;
-	front_counter_continue++;
-	smd_counter = front_counter / step_size;
+	if (skip_first_front > 0) {
+		front_counter++;
+		front_counter_continue++;
+		smd_counter = front_counter / step_size;
+	}
+	skip_first_front = 1;
 }
