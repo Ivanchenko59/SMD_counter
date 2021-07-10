@@ -65,8 +65,8 @@ void main_menu(void) {
 	SSD1306_GotoXY(0,52);
 	SSD1306_Puts("Step:x", &Font_7x10, SSD1306_COLOR_WHITE);
 	SSD1306_Puts(str, &Font_7x10, SSD1306_COLOR_WHITE);
-	SSD1306_GotoXY(22, 20);
-	SSD1306_Puts("Press OK for", &Font_7x10, SSD1306_COLOR_WHITE);
+	SSD1306_GotoXY(25, 20);
+	SSD1306_Puts("Press OK to", &Font_7x10, SSD1306_COLOR_WHITE);
 	SSD1306_GotoXY(15, 32);
 	SSD1306_Puts("start counting", &Font_7x10, SSD1306_COLOR_WHITE);
 	
