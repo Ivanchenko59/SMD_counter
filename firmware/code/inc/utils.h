@@ -8,5 +8,6 @@ extern volatile uint32_t sys_tick;
 //void pll_init(void);
 void delay(uint32_t milliseconds);
 void TCST_init(void);
-
+void ADC1_init(void);
+uint16_t get_battery_voltage(void);
 #endif /* __UTILS_H__ */

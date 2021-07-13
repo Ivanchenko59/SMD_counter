@@ -1,5 +1,9 @@
 #include "menu.h"
 
+#define BATTERY_VOLTAGE (3300*get_battery_voltage())/4096
+#define MIN_BATTERY_VOLTAGE 1200
+#define MAX_BATTERY_VOLTAGE 3000
+#define BATTERY_PERCENT (BATTERY_VOLTAGE  - MIN_BATTERY_VOLTAGE) * (100 - 0) / (MAX_BATTERY_VOLTAGE - MIN_BATTERY_VOLTAGE)
 #define DATABASE_SIZE 13
 #define START_X 4
 #define START_Y 4
@@ -59,6 +63,9 @@ void welcome_menu(void) {
 void main_menu(void) {
 	state = STATE_MAIN_MENU;
 	
+	SSD1306_GotoXY(0, 0);
+	sprintf(str,"%u%%", BATTERY_PERCENT);
+	SSD1306_Puts(str,&Font_7x10, SSD1306_COLOR_WHITE);
 	SSD1306_GotoXY(116, 0);
 	SSD1306_Puts("~", &Font_11x18, SSD1306_COLOR_WHITE);				//lock bitmap
 	sprintf(str,"%u", step_size);

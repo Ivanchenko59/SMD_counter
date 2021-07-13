@@ -2,7 +2,6 @@
 
 volatile uint32_t front_counter = 0, front_counter_continue = 0, smd_counter, smd_counter_continue;
 uint8_t skip_first_front = 0;
-
 int main() {
 	
 	mcu_init();
@@ -30,6 +29,7 @@ void mcu_init() {
 	SSD1306_Init();
 	button_init();
 	TCST_init();
+	ADC1_init();
 }	
 
 void SysTick_Handler() {
