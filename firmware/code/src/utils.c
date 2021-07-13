@@ -1,6 +1,7 @@
 #include "utils.h"
 
 volatile uint32_t sys_tick = 0;
+float k = 0.05;
 
 void delay(const uint32_t milliseconds) {
 	uint32_t start = sys_tick;
@@ -62,6 +63,17 @@ void ADC1_init() {
 
 }
 
+void TMR4_init() {
+
+	RCC->APB1ENR |= RCC_APB1ENR_TIM4EN;
+	TIM4->PSC = (SystemCoreClock / 2) / 1000 - 1; 
+	TIM4->ARR = 100 - 1;                         // 1 секунда
+	TIM4->DIER |= TIM_DIER_UIE;                   // разрешаем прерывание по переполнению
+	NVIC_EnableIRQ(TIM4_IRQn);                    // глобально разрешаем прерывание	​
+	TIM4->CR1 |= TIM_CR1_CEN;                     // запускаем таймер
+	
+}
+
 uint16_t get_battery_voltage(void) {
     // Запуск преобразования и ожидание его завершения
 	ADC1->CR2 |= ADC_CR2_ADON;
@@ -70,3 +82,8 @@ uint16_t get_battery_voltage(void) {
 	return ADC1->DR;
 }
 
+uint16_t expRunningAverage(uint16_t newVal) {
+  static uint16_t filVal = 0;
+  filVal += (newVal - filVal) * k;
+  return filVal;
+}

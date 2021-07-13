@@ -2,6 +2,7 @@
 
 volatile uint32_t front_counter = 0, front_counter_continue = 0, smd_counter, smd_counter_continue;
 uint8_t skip_first_front = 0;
+uint16_t battery_voltage;
 int main() {
 	
 	mcu_init();
@@ -30,6 +31,7 @@ void mcu_init() {
 	button_init();
 	TCST_init();
 	ADC1_init();
+	TMR4_init();
 }	
 
 void SysTick_Handler() {
@@ -45,4 +47,9 @@ void EXTI4_IRQHandler(void) {
 		smd_counter = front_counter / step_size;
 	}
 	skip_first_front = 1;
+}
+
+void TIM4_IRQHandler(void) {
+    battery_voltage = expRunningAverage(get_battery_voltage());
+    TIM4->SR &= ~TIM_SR_UIF; // сбрасываем прерывание
 }
