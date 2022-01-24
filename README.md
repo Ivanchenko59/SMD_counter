@@ -5,3 +5,6 @@
   Also, adding the read components to the database on the computer.
   
 ### In the process of filling
+
+_**[Demo video 1](https://youtu.be/vhZqCzfXYpA)**_
+_**[Demo video 2](https://youtu.be/8hMTs-ckCMA)**_
