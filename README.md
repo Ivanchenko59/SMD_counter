@@ -1,8 +1,10 @@
 # SMD counter
 
 ## About project
-  This is my educational project for studying the STM32F103C8T6 microcontroller. This device is made to count the number of components in the SMD tape. 
-  Also, adding the read components to the database on the computer.
+The device is designed to count the number of radio components in the SMD tape. The counting is based on an optical principle using an optocoupler.
+The project was developed as a training project for working with STM32F103 microcontroller peripherals. The device uses the basic peripherals such as: GPIO, interrupts,    timers, I2C, ADC, etc. I also used the state machine pattern. The firmware is written with CMSIS. The circuitry of the device and the PCB were also developed. The case was modeled and 3D printed.
+
+  
   
   <img src="https://github.com/Ivanchenko59/SMD_counter/blob/master/images/3d_case.png" width = "80%">
  
